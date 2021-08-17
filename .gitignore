@@ -1,0 +1,103 @@
+# Webstorm / vsCode Project Directory
+/.idea/
+/.vscode/
+/.sfdx/
+/IlluminatedCloud/
+/_demos/
+/docs/
+
+# Plugin-specific files
+out/
+
+# Salesforce cache
+.sfdx/
+.localdevserver/
+
+# LWC VSCode autocomplete
+**/lwc/jsconfig.json
+
+# LWC Jest coverage reports
+coverage/
+
+# macOS template
+# General
+*.DS_Store
+.AppleDouble
+.LSOverride
+*.code-workspace
+
+# Code Recommenders
+.recommenders/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Certificates
+*.pem
+*.crt
+*.key
+*.jks
+*.key.pub
+
+# Optional npm cache directory
+/.npm
+
+# Optional eslint cache
+/.eslintcache
+
+# misc
+/.scratch
+/.jekyll-cache
+/_deploy
+/_jwt
+**/node_modules
+
+# dotenv environment variables file
+.env
+*.alt
+
+# Ignore dwupload config
+connections-source.json
+dw.json
+
+# MacOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Ignore rendered sfdx meta-data folders (vs. the template)
+/src/sfdc/base/main/default/certs/
+/src/sfdc/base/main/default/cspTrustedSites/
+/src/sfdc/base/main/default/remoteSiteSettings/
+/src/sfdc/base/main/default/namedCredentials/
+/src/sfdc/base/main/default/connectedApps/
+/src/sfdc/base/main/default/duplicateRules/
+/src/sfdc/personaccounts/main/default/duplicateRules/
+/src/sfdc/_templates/duplicateRules/_tmp/
+
+# Ignore the rendered connectedAppCredentails file
+/config-dx/*.connectedAppCredentials.json
+/config-dx/*.ocapi.json
+/config-dx/*.jks.json
+
+# Ignore sfcc services.xml meta-data generated-files
+/src/sfcc/site-template/services.xml
+
+# Ignore my test-deployment file
+**DeployTest.*
+.nyc_output
+connectedAppCredentials.json
