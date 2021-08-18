@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "sgmf-scripts --lint js && sgmf-scripts --lint css",
     "upload": "sgmf-scripts --upload -- ",
-    "uploadCartridge": "sgmf-scripts --uploadCartridge plugin_b2cloyalty int_b2cloyalty",
+    "uploadCartridge": "sgmf-scripts --uploadCartridge plugin_b2cloyalty && sgmf-scripts --uploadCartridge int_b2cloyalty",
     "compile:js": "sgmf-scripts --compile js",
     "compile:scss": "sgmf-scripts --compile css"
   },
