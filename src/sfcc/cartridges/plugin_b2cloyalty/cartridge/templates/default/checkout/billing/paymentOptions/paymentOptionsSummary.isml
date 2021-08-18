@@ -1,0 +1,18 @@
+<div class="credit-card-type">
+    <span>APA</span>
+</div>
+<div class="credit-card-number">
+    SOME NUMBER
+</div>
+<div class="credit-card-expiration-date">
+    <span>SOME EXPIRATION</span>
+</div>
+
+
+<div class="payment-details">
+    <isloop items="${pdict.order.billing.payment.selectedPaymentInstruments}" var="payment">
+        <isif condition="${payment.paymentMethod === 'CREDIT_CARD'}">
+            <isinclude template="checkout/billing/paymentOptions/creditCardSummary" />
+        </isif>
+    </isloop>
+</div>

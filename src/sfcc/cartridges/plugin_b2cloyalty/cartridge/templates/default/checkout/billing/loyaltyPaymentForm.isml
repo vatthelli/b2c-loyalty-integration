@@ -1,0 +1,34 @@
+<isset name="loyaltyPaymentFields" value="${pdict.forms.billingForm.loyaltyPaymentFields}" scope="page" />
+
+<div class="row">
+    <div class="col-12">
+        <div class="form-group
+            <isif condition=${loyaltyPaymentFields.amount.mandatory === true}>required</isif>
+            ${loyaltyPaymentFields.amount.htmlName}">
+            <label class="form-control-label" for="amount">Loyalty amount</label>
+            <iscomment>
+                <div class="card-number-wrapper">
+            </iscomment>
+            <input type="text" class="form-control cardNumber" id="amount" value="${loyaltyPaymentFields.amount ? loyaltyPaymentFields.amount || '' : ''}" <isprint
+                value=${loyaltyPaymentFields.amount.attributes} encoding="off" />
+            aria-describedby="cardNumberInvalidMessage"
+            >
+            <div class="invalid-feedback" id="cardNumberInvalidMessage"></div>
+            <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
+            <iscomment>
+        </div>
+        </iscomment>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-12 next-step-button">
+        <div class="mb-sm-3">
+            <button class="btn btn-primary btn-block submit-loyaltypayment" id="submit-loyaltypayment" type="submit" name="submit"
+                value="submit-loyaltypayment">
+                Pay with points
+            </button>
+        </div>
+    </div>
+</div>

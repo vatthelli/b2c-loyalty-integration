@@ -1,0 +1,12 @@
+{
+    "hooks": [
+        {
+            "name": "app.payment.processor.loyalty",
+            "script": "./cartridge/scripts/hooks/payment/processor/loyalty"
+        },
+        {
+            "name": "app.payment.form.processor.loyalty",
+            "script": "./cartridge/scripts/hooks/payment/processor/loyalty_form_processor"
+        }
+    ]
+}

@@ -7,7 +7,7 @@
     "lint": "sgmf-scripts --lint js && sgmf-scripts --lint css",
     "upload": "sgmf-scripts --upload -- ",
     "uploadCartridge": "sgmf-scripts --uploadCartridge plugin_b2cloyalty && sgmf-scripts --uploadCartridge int_b2cloyalty",
-    "compile:js": "sgmf-scripts --compile js",
+    "compile:js": "sgmf-scripts --compile js --cartridgeName=plugin_b2cloyalty",
     "compile:scss": "sgmf-scripts --compile css"
   },
   "devDependencies": {
@@ -31,5 +31,8 @@
   "browserslist": [
     "last 2 versions",
     "ie >= 10"
-  ]
+  ],
+  "paths": {
+    "base": "../../../storefront-reference-architecture/cartridges/app_storefront_base/"
+  }
 }
