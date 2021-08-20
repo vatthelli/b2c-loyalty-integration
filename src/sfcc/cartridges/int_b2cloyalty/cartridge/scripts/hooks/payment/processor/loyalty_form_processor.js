@@ -22,6 +22,16 @@ function processForm(req, paymentForm, viewFormData) {
     //     };
     // }
 
+
+    var loyaltyFormErrors = COHelpers.validateFields(paymentForm.loyaltyPaymentFields);
+    if (Object.keys(loyaltyFormErrors).length) {
+        //formFieldErrors.push(loyaltyFormErrors);
+        return {
+            fieldErrors: loyaltyFormErrors,
+            error: true
+        };
+    }
+
     viewData.paymentMethod = {
         value: paymentForm.paymentMethod.value,
         htmlName: paymentForm.paymentMethod.value

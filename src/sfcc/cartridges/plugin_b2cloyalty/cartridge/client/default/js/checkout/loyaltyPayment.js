@@ -1,23 +1,13 @@
 'use strict';
 
-var customerHelpers = require('base/checkout/customer');
-var addressHelpers = require('base/checkout/address');
-var shippingHelpers = require('base/checkout/shipping');
-var billingHelpers = require('base/checkout/billing');
-var summaryHelpers = require('base/checkout/summary');
 var formHelpers = require('base/checkout/formErrors');
 var scrollAnimate = require('base/components/scrollAnimate');
-
 
 var exports = {
     clickLoyaltyPayment: function () {
         $('#submit-loyaltypayment').on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            console.log('submit-loyaltypayment clicked');
-
-
-
 
             var loyaltyPaymentForm = $('#dwfrm_billing .loyalty-payment-form-fields :input').serialize();
 
@@ -50,7 +40,7 @@ var exports = {
                         if (data.fieldErrors.length) {
                             data.fieldErrors.forEach(function (error) {
                                 if (Object.keys(error).length) {
-                                    formHelpers.loadFormErrors('.payment-form', error);
+                                    formHelpers.loadFormErrors('.loyalty-payment-form', error);
                                 }
                             });
                         }
@@ -87,7 +77,7 @@ var exports = {
                             $('.cancel-new-payment').removeClass('checkout-hidden');
                         }
 
-                        scrollAnimate();
+                        //scrollAnimate();
                         defer.resolve(data);
                     }
                 },

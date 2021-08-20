@@ -4,6 +4,6 @@
     <field formid="paymentMethod" type="string" mandatory="true" />
 
     <field formid="amount" label="label.input.loyaltypayment.amount" type="integer" mandatory="true" binding="amount"
-           missing-error="payment.loyalty.amount.missing" parse-error="error.message.required" />
+           missing-error="payment.loyalty.amount.missing" parse-error="payment.loyalty.parseerror" />
 
 </form>

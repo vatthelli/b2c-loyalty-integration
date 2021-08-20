@@ -6,20 +6,12 @@
             <isif condition=${loyaltyPaymentFields.amount.mandatory === true}>required</isif>
             ${loyaltyPaymentFields.amount.htmlName}">
             <label class="form-control-label" for="amount">Loyalty amount</label>
-            <iscomment>
-                <div class="card-number-wrapper">
-            </iscomment>
-            <input type="text" class="form-control cardNumber" id="amount" value="${loyaltyPaymentFields.amount ? loyaltyPaymentFields.amount || '' : ''}" <isprint
-                value=${loyaltyPaymentFields.amount.attributes} encoding="off" />
-            aria-describedby="cardNumberInvalidMessage"
-            >
-            <div class="invalid-feedback" id="cardNumberInvalidMessage"></div>
+            <input type="text" class="form-control" id="amount" value="" <isprint
+                value=${loyaltyPaymentFields.amount.attributes} encoding="off" />>
+            <div class="invalid-feedback" id="loyaltyPaymentInvalidMessage"></div>
             <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
-            <iscomment>
         </div>
-        </iscomment>
     </div>
-</div>
 </div>
 
 <div class="row">
