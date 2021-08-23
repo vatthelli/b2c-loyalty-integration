@@ -8,6 +8,7 @@ var exports = {
         $('#submit-loyaltypayment').on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
+            var form = $(this);
 
             var loyaltyPaymentForm = $('#dwfrm_billing .loyalty-payment-form-fields :input').serialize();
 
@@ -28,11 +29,14 @@ var exports = {
             $('body').trigger('checkout:disableButton', '.next-step-button button');
 
             console.log('PAYMENT AJAX NEW');
+            var defer = $.Deferred();
+            form.spinner().start();
             $.ajax({
                 url: $('#dwfrm_billing').attr('action'),
                 method: 'POST',
                 data: paymentForm,
                 success: function (data) {
+                    form.spinner().stop();
                      // enable the next:Place Order button here
                     $('body').trigger('checkout:enableButton', '.next-step-button button');
                     // look for field validation errors
@@ -76,12 +80,19 @@ var exports = {
                         ) {
                             $('.cancel-new-payment').removeClass('checkout-hidden');
                         }
+                        if (true) {
+                            console.log('Getting here at least!');
+                            let pis = data.order.billing.payment.selectedPaymentInstruments;
+                            let loyaltyPi = pis.find(elem => 'LOYALTY' === elem.paymentMethod);
+                            $('.loyalty-amount-added').text(loyaltyPi.amount);
+                        }
 
                         //scrollAnimate();
                         defer.resolve(data);
                     }
                 },
                 error: function (err) {
+                    form.spinner().stop();
                     // enable the next:Place Order button here
                     $('body').trigger('checkout:enableButton', '.next-step-button button');
                     if (err.responseJSON && err.responseJSON.redirectUrl) {

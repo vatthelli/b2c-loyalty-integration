@@ -12,14 +12,20 @@ let CONSTANTS = require('*/cartridge/scripts/loyaltyConstants');
 
 var base = module.superModule;
 
-
 /**
- * Sets the payment transaction amount
+ * Sets the payment transaction amount. Overrides the OOTB version to cater for
+ * multiple payment instruments. The assumptions are:
+ * 1: An arbitrary number of payment instruments (PIs) are allowed
+ * 2: All non-CC PIs need to have amount set
+ * 3: If non-CC PIs cover the full order amount, all good
+ * 4: Otherwise, the CC PI will have the remaining amount set as amount
  * @param {dw.order.Basket} currentBasket - The current basket
  * @returns {Object} an error object
  */
- function calculatePaymentTransaction(currentBasket) {
-    if (currentBasket.paymentInstruments.length == 1) {
+function calculatePaymentTransaction(currentBasket) {
+    var paymentInstruments = currentBasket.paymentInstruments;
+    if (paymentInstruments.length == 1 && PaymentInstrument.METHOD_CREDIT_CARD.equals(paymentInstruments[0].paymentMethod)) {
+        // OOTB logic can take care of validating credit card case
         return base.calculatePaymentTransaction(currentBasket);
     }
     var result = { error: false };
@@ -45,7 +51,9 @@ var base = module.superModule;
 
     if (!result.error && remainingAmount.value > 0 && piToPayRemainder) {
         try {
+            //let Money = require('dw/value/Money');
             Transaction.wrap(function () {
+                //piToPayRemainder.paymentTransaction.setAmount(Money(0.0, currentBasket.getCurrencyCode()));
                 piToPayRemainder.paymentTransaction.setAmount(remainingAmount);
             });
         } catch (e) {
@@ -55,55 +63,6 @@ var base = module.superModule;
     }
     return result;
 }
-
-
-// This version assumes all payments are in place, which is not true as it's also called from SubmitPayment
-// /**
-//  * Sets the payment transaction amount
-//  * @param {dw.order.Basket} currentBasket - The current basket
-//  * @returns {Object} an error object
-//  */
-// function calculatePaymentTransaction(currentBasket) {
-//     if (currentBasket.paymentInstruments.length == 1) {
-//         return base.calculatePaymentTransaction(currentBasket);
-//     }
-//     var result = { error: false };
-//     var paymentInstruments = currentBasket.paymentInstruments;
-
-//     var remainingAmount = currentBasket.totalGrossPrice;
-//     var piToPayRemainder = null;
-
-//     collections.forEach(paymentInstruments, function (pi) {
-//         if (PaymentInstrument.METHOD_CREDIT_CARD.equals(pi.paymentMethod)) {
-//             // Use CC to pay for remainder. Also, ignore any amount that may
-//             // already have been set. This way we can reconfigure payment
-//             // integrations that assume they pay the full amount
-//             piToPayRemainder = pi;
-//         }
-//         else if (pi.paymentTransaction.amount) {
-//             remainingAmount = remainingAmount.subtract(pi.paymentTransaction.amount);
-//         } else {
-//             // Non-CC without amount set, not allowed
-//             result.error = true;
-//         }
-//     });
-
-//     if (!result.error && remainingAmount.value > 0 && !piToPayRemainder) {
-//         // There is a remaining amount but no payment instrument to pay for it
-//         result.error = true;
-//     }
-
-//     if (!result.error && remainingAmount.value > 0) {
-//         try {
-//             Transaction.wrap(function () {
-//                 piToPayRemainder.paymentTransaction.setAmount(remainingAmount);
-//             });
-//         } catch (e) {
-//             result.error = true;
-//         }
-//     }
-//     return result;
-// }
 
 /**
  * Validates payment
