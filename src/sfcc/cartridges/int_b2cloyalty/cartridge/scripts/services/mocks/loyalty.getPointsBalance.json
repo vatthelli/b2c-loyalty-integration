@@ -1,0 +1,10 @@
+{
+    "errors":null,
+    "isSuccess":true,
+    "outputValues":{ 
+         "LoyaltyprogramMemberId":"0lMxx0000A000001EAA",
+         "programCurrencyName":"Avios",
+         "ProgramName":"baLoyalty",
+         "pointsBalance":500.0
+    }
+ }

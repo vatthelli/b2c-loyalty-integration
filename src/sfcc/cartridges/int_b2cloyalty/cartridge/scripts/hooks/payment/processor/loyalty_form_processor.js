@@ -13,19 +13,8 @@ function processForm(req, paymentForm, viewFormData) {
     var array = require('*/cartridge/scripts/util/array');
 
     var viewData = viewFormData;
-    // var creditCardErrors = {};
-    // creditCardErrors = COHelpers.validateCreditCard(paymentForm);
-    // if (Object.keys(creditCardErrors).length) {
-    //     return {
-    //         fieldErrors: creditCardErrors,
-    //         error: true
-    //     };
-    // }
-
-
     var loyaltyFormErrors = COHelpers.validateFields(paymentForm.loyaltyPaymentFields);
     if (Object.keys(loyaltyFormErrors).length) {
-        //formFieldErrors.push(loyaltyFormErrors);
         return {
             fieldErrors: loyaltyFormErrors,
             error: true

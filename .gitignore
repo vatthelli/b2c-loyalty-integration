@@ -66,6 +66,9 @@ pids
 .env
 *.alt
 
+# Ignore SFCC generated directories
+/src/sfcc/cartridges/plugin_b2cloyalty/cartridge/static/
+
 # Ignore dwupload config
 connections-source.json
 dw.json
