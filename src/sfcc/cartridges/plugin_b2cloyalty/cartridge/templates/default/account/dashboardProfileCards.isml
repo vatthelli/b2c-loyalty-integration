@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <!---Profile--->
+        <isinclude template="account/profileCard"/>
+
+        <isif condition="${!pdict.account.isExternallyAuthenticated}">
+            <!---Password--->
+            <isinclude template="account/passwordCard"/>
+        </isif>
+
+        <!---Address Book--->
+        <isinclude template="account/addressBookCard"/>
+
+        <iscomment>
+            START: Loyalty B2C Commerce Cloud Integration : Loyalty Member Acquisition : Update Customer
+        </iscomment>
+        <!---Loyalty--->
+        <isinclude template="account/loyaltyCard"/>
+        <iscomment>
+            END: Loyalty B2C Commerce Cloud Integration : Loyalty Member Acquisition : Update Customer
+        </iscomment>
+
+    </div>
+    <div class="col-sm-6">
+        <!---Order History--->
+        <isif condition="${pdict.account.orderHistory}">
+            <isset name="order" value="${pdict.account.orderHistory}" scope="page"/>
+            <isinclude template="account/order/orderHistoryCard"/>
+        </isif>
+        <!---Payment--->
+        <isinclude template="account/paymentCard"/>
+    </div>
+</div>
