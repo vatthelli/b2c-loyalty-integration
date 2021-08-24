@@ -75,4 +75,28 @@ server.append('SubmitRegistration', function (req, res, next) {
     next();
 });
 
+/**
+ * @description Extend the Show method to add loyalty data to the model
+ * When a customer open my account page via the storefront -- a customer data will be extended with Loyalty information.
+ *
+ * @param name {String} Name of the route to modify
+ * @param arguments {Function} List of functions to be appended
+ */
+server.append('Show', function (req, res, next) {
+    this.on('route:BeforeComplete', function (requ, resp) {
+        var viewData = resp.getViewData();
+
+        if (customer.isAuthenticated()) {
+            var customerProfile = customer.getProfile();
+
+            viewData.loyalty = {
+                b2cloyalty_optInStatus : customerProfile.custom.b2cloyalty_optInStatus
+            }
+        }
+
+        resp.setViewData(viewData);
+    });
+    next();
+});
+
 module.exports = server.exports();
