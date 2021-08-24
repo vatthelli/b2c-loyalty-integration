@@ -1,21 +1,21 @@
 'use strict';
 
-let collections = require('*/cartridge/scripts/util/collections');
-
-let PaymentInstrument = require('dw/order/PaymentInstrument');
-let PaymentMgr = require('dw/order/PaymentMgr');
-let PaymentStatusCodes = require('dw/order/PaymentStatusCodes');
-let Resource = require('dw/web/Resource');
-let Transaction = require('dw/system/Transaction');
-let Money = require('dw/value/Money');
-let Status = require('dw/system/Status');
-let ServiceMgr = require('*/cartridge/scripts/services/ServiceMgr');
-let CONSTANTS = require('*/cartridge/scripts/loyaltyConstants');
+var PaymentInstrument = require('dw/order/PaymentInstrument');
+var PaymentMgr = require('dw/order/PaymentMgr');
+var PaymentStatusCodes = require('dw/order/PaymentStatusCodes');
+var Resource = require('dw/web/Resource');
+var Transaction = require('dw/system/Transaction');
+var Money = require('dw/value/Money');
+var Status = require('dw/system/Status');
+var ServiceMgr = require('*/cartridge/scripts/services/ServiceMgr');
+var CONSTANTS = require('*/cartridge/scripts/loyaltyConstants');
+var pointsToMoneyHelpers = require('*/cartridge/scripts/helpers/pointsToMoneyHelpers');
+var collections = require('*/cartridge/scripts/util/collections');
 
 /**
  * @type {dw/system/Log}
  */
-let LOGGER = require('dw/system/Logger').getLogger('b2cloyalty', 'scripts.hooks.payment.loyalty');
+var LOGGER = require('dw/system/Logger').getLogger('b2cloyalty', 'scripts.hooks.payment.loyalty');
 
 /**
  * Creates a token. This should be replaced by utilizing a tokenization provider
@@ -35,14 +35,14 @@ function createToken() {
  * @return {Object} returns an error object
  */
 function Handle(basket, paymentInformation, paymentMethodID, req) {
-    let currentBasket = basket;
-    let serverErrors = [];
-    let result = null;
+    var currentBasket = basket;
+    var serverErrors = [];
+    var result = null;
     if (!customer.profile) {
         serverErrors.push('Customer not logged in. Cannot use points!');
     } else {
-        let pointsBalanceAction = new (require('*/cartridge/scripts/models/core/pointsBalanceAction'))(customer.profile);
-        let requestBody = pointsBalanceAction.getRequestBody();
+        var pointsBalanceAction = new (require('*/cartridge/scripts/models/core/pointsBalanceAction'))(customer.profile);
+        var requestBody = pointsBalanceAction.getRequestBody();
 
         LOGGER.info('Checking available loyalty points. Here is the request body: {0}', requestBody);
         result = ServiceMgr.callRestService('loyalty', 'getPointsBalance', requestBody);
@@ -52,21 +52,21 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
     }
 
     if (result && result.status == 'OK') {
-        let amount = paymentInformation.amount.value;
-        let allowedAmount = result.object.outputValues.pointsBalance;
-        if (amount > allowedAmount) {
-            serverErrors.push('Not enough points. Expected: ' + amount + ', allowed: ' + allowedAmount);
+        var pointAmount = paymentInformation.amount.value;
+        var allowedPointAmount = result.object.outputValues.pointsBalance;
+        if (pointAmount > allowedPointAmount) {
+            serverErrors.push('Not enough points. Expected: ' + pointAmount + ', allowed: ' + allowedPointAmount);
         } else {
+            var moneyAmount = pointsToMoneyHelpers.pointsToMoney(pointAmount, currentBasket.getCurrencyCode());
             Transaction.wrap(function () {
-                let paymentInstruments = currentBasket.getPaymentInstruments(
+                var paymentInstruments = currentBasket.getPaymentInstruments(
                     CONSTANTS.LOYALTY_PAYMENT_METHOD_ID
                 );
                 collections.forEach(paymentInstruments, function (item) {
                     currentBasket.removePaymentInstrument(item);
                 });
-                let moneyAmount = Money(amount, currentBasket.getCurrencyCode());
 
-                let paymentInstrument = currentBasket.createPaymentInstrument(CONSTANTS.LOYALTY_PAYMENT_METHOD_ID, moneyAmount);
+                var paymentInstrument = currentBasket.createPaymentInstrument(CONSTANTS.LOYALTY_PAYMENT_METHOD_ID, moneyAmount);
                 // paymentInstrument.paymentTransaction.custom.status = 'PENDING';
                 // paymentInstrument.custom.piStatus = 'PENDING';
             });

@@ -65,7 +65,8 @@ function calculatePaymentTransaction(currentBasket) {
 }
 
 /**
- * Validates payment
+ * Changes SFRA logic to allow payment methods by default, and fail on explicit
+ * conditions. Required to deal with multi-tender.
  * @param {Object} req - The local instance of the request object
  * @param {dw.order.Basket} currentBasket - The current basket
  * @returns {Object} an object that has error information
@@ -91,38 +92,25 @@ function validatePayment(req, currentBasket) {
         paymentAmount
     );
 
-    var invalid = true;
+    var invalid = false;
 
     for (var i = 0; i < paymentInstruments.length; i++) {
         var paymentInstrument = paymentInstruments[i];
-
-        if (PaymentInstrument.METHOD_GIFT_CERTIFICATE.equals(paymentInstrument.paymentMethod)) {
-            invalid = false;
-        }
-
         var paymentMethod = PaymentMgr.getPaymentMethod(paymentInstrument.getPaymentMethod());
-
         if (paymentMethod && applicablePaymentMethods.contains(paymentMethod)) {
-            if (CONSTANTS.LOYALTY_PAYMENT_METHOD_ID.equals(paymentInstrument.paymentMethod)) {
-                continue;
-            }
             if (PaymentInstrument.METHOD_CREDIT_CARD.equals(paymentInstrument.paymentMethod)) {
                 var card = PaymentMgr.getPaymentCard(paymentInstrument.creditCardType);
 
                 // Checks whether payment card is still applicable.
-                if (card && applicablePaymentCards.contains(card)) {
-                    invalid = false;
+                if (!card || !applicablePaymentCards.contains(card)) {
+                    invalid = true;
                 }
-            } else {
-                invalid = false;
             }
         }
-
         if (invalid) {
             break; // there is an invalid payment instrument
         }
     }
-
     result.error = invalid;
     return result;
 }

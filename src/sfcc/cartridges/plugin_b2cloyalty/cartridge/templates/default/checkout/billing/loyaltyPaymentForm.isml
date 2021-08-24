@@ -15,7 +15,7 @@
 </div>
 
 <div class="row">
-    <div class="col-12 next-step-button">
+    <div class="col-12 submit-loyaltypayment-button">
         <div class="mb-sm-3">
             <button class="btn btn-primary btn-block submit-loyaltypayment" id="submit-loyaltypayment" type="submit" name="submit"
                 value="submit-loyaltypayment">
@@ -25,10 +25,18 @@
     </div>
 </div>
 
+
 <div class="row">
-    <div class="col-12 loyalty-amount-added-section">
+    <div class="col-12 loyalty-amount-info-section checkout-hidden">
         <div class="mb-sm-3">
             <p class="summary-section-label loyalty-amount-added-label">${Resource.msg('label.order.loyalty.amount.added', 'confirmation', null)}<span class="loyalty-amount-added" /></p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 loyalty-amount-info-section checkout-hidden">
+        <div class="mb-sm-3">
+            <p class="summary-section-label loyalty-amount-remaining-label">${Resource.msg('label.order.loyalty.amount.remaining', 'confirmation', null)}<span class="loyalty-amount-remaining" /></p>
         </div>
     </div>
 </div>

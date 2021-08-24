@@ -2,45 +2,16 @@
 
 var PaymentMgr = require('dw/order/PaymentMgr');
 var PaymentInstrument = require('dw/order/PaymentInstrument');
+var formatMoney = require('dw/util/StringUtils').formatMoney;
 var assign = require('server/assign');
 var collections = require('*/cartridge/scripts/util/collections');
+var paymentHelpers = require('*/cartridge/scripts/helpers/paymentHelpers');
+
 
 var base = module.superModule;
 
 /**
- * Creates an array of objects containing applicable payment methods
- * @param {dw.util.ArrayList<dw.order.dw.order.PaymentMethod>} paymentMethods - An ArrayList of
- *      applicable payment methods that the user could use for the current basket.
- * @returns {Array} of object that contain information about the applicable payment methods for the
- *      current cart
- */
-function applicablePaymentMethods(paymentMethods) {
-    return collections.map(paymentMethods, function (method) {
-        return {
-            ID: method.ID,
-            name: method.name
-        };
-    });
-}
-
-/**
- * Creates an array of objects containing applicable credit cards
- * @param {dw.util.Collection<dw.order.PaymentCard>} paymentCards - An ArrayList of applicable
- *      payment cards that the user could use for the current basket.
- * @returns {Array} Array of objects that contain information about applicable payment cards for
- *      current basket.
- */
-function applicablePaymentCards(paymentCards) {
-    return collections.map(paymentCards, function (card) {
-        return {
-            cardType: card.cardType,
-            name: card.name
-        };
-    });
-}
-
-/**
- * Creates an array of objects containing selected payment information
+ * Overrides SFRA version and adds formattedAmount
  * @param {dw.util.ArrayList<dw.order.PaymentInstrument>} selectedPaymentInstruments - ArrayList
  *      of payment instruments that the user is using to pay for the current basket
  * @returns {Array} Array of objects that contain information about the selected payment instruments
@@ -49,7 +20,8 @@ function getSelectedPaymentInstruments(selectedPaymentInstruments) {
     return collections.map(selectedPaymentInstruments, function (paymentInstrument) {
         var results = {
             paymentMethod: paymentInstrument.paymentMethod,
-            amount: paymentInstrument.paymentTransaction.amount.value
+            amount: paymentInstrument.paymentTransaction.amount.value,
+            formattedAmount: formatMoney(paymentInstrument.paymentTransaction.amount)
         };
         if (paymentInstrument.paymentMethod === 'CREDIT_CARD') {
             results.lastFour = paymentInstrument.creditCardNumberLastDigits;
@@ -68,6 +40,20 @@ function getSelectedPaymentInstruments(selectedPaymentInstruments) {
 }
 
 /**
+ * Retrieves an object with the remaining amount as a number and as a formatted string.
+ * @param {dw.order.Basket} currentBasket 
+ * @returns Object with remaining amount
+ */
+function getRemainingAmount(currentBasket) {
+    var remainingAmount = paymentHelpers.getRemainingAmount(currentBasket);
+    var results = {
+        amount: remainingAmount.value,
+        formattedAmount: formatMoney(remainingAmount)
+    }
+    return results;
+}
+
+/**
  * Payment class that represents payment information for the current basket
  * @param {dw.order.Basket} currentBasket - the target Basket object
  * @param {dw.customer.Customer} currentCustomer - the associated Customer object
@@ -76,6 +62,12 @@ function getSelectedPaymentInstruments(selectedPaymentInstruments) {
  */
 function Payment(currentBasket, currentCustomer, countryCode) {
     base.call(this, currentBasket, currentCustomer, countryCode);
+
+    var paymentInstruments = currentBasket.paymentInstruments;
+    this.selectedPaymentInstruments = paymentInstruments ?
+        getSelectedPaymentInstruments(paymentInstruments) : null;
+
+    this.remainingAmount = getRemainingAmount(currentBasket);
 }
 
 module.exports = Payment;

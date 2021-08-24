@@ -5,6 +5,7 @@ var scrollAnimate = require('base/components/scrollAnimate');
 
 var exports = {
     clickLoyaltyPayment: function () {
+        // Deals with the payment with loyalty points button press
         $('#submit-loyaltypayment').on('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -22,14 +23,11 @@ var exports = {
                 }
             });
 
-            //var paymentForm = billingAddressForm + '&' + contactInfoForm + '&' + paymentInfoForm;
             var paymentForm = loyaltyPaymentForm;
 
              // disable the next:Place Order button here
             $('body').trigger('checkout:disableButton', '.next-step-button button');
 
-            console.log('PAYMENT AJAX NEW');
-            var defer = $.Deferred();
             form.spinner().start();
             $.ajax({
                 url: $('#dwfrm_billing').attr('action'),
@@ -39,6 +37,14 @@ var exports = {
                     form.spinner().stop();
                      // enable the next:Place Order button here
                     $('body').trigger('checkout:enableButton', '.next-step-button button');
+
+                    // Set the whole response to a data attribute. Will be used by subsequent logic
+                    $('#dwfrm_billing').data('last-data-response', data);
+
+                    // Always set normal payment fields to visible until confirmed that they should be hidden
+                    $('.payment-information').removeClass('checkout-hidden');
+                    $('.credit-card-selection-new').removeClass('checkout-hidden');
+
                     // look for field validation errors
                     if (data.error) {
                         if (data.fieldErrors.length) {
@@ -60,12 +66,7 @@ var exports = {
                         if (data.cartError) {
                             window.location.href = data.redirectUrl;
                         }
-
-                        defer.reject();
                     } else {
-                        //
-                        // Populate the Address Summary
-                        //
                         $('body').trigger('checkout:updateCheckoutView',
                             { order: data.order, customer: data.customer });
 
@@ -80,19 +81,26 @@ var exports = {
                         ) {
                             $('.cancel-new-payment').removeClass('checkout-hidden');
                         }
-                        if (true) {
-                            console.log('Getting here at least!');
+                        if (data && data.order && data.order.billing && data.order.billing.payment && data.order.billing.payment.selectedPaymentInstruments) {
+                            $('.loyalty-amount-info-section').removeClass('checkout-hidden');
                             let pis = data.order.billing.payment.selectedPaymentInstruments;
                             let loyaltyPi = pis.find(elem => 'LOYALTY' === elem.paymentMethod);
-                            $('.loyalty-amount-added').text(loyaltyPi.amount);
-                        }
+                            $('.loyalty-amount-added').text(loyaltyPi.formattedAmount);
+                            $('.loyalty-amount-remaining').text(data.order.billing.payment.remainingAmount.formattedAmount);
 
-                        //scrollAnimate();
-                        defer.resolve(data);
+                            let remainingAmount = data.order.billing.payment.remainingAmount.amount;
+                            $('#checkout-main').data('remaining-amount', remainingAmount);
+                            if (remainingAmount <= 0) {
+                                $('.payment-information').addClass('checkout-hidden');
+                                $('.credit-card-selection-new').addClass('checkout-hidden');
+                            }
+                        }
                     }
                 },
                 error: function (err) {
                     form.spinner().stop();
+                    $('.payment-information').removeClass('checkout-hidden');
+                    $('.credit-card-selection-new').removeClass('checkout-hidden');
                     // enable the next:Place Order button here
                     $('body').trigger('checkout:enableButton', '.next-step-button button');
                     if (err.responseJSON && err.responseJSON.redirectUrl) {
@@ -100,14 +108,8 @@ var exports = {
                     }
                 }
             });
-
-
-
-
         });
-    },
-
-
+    }
 };
 
 

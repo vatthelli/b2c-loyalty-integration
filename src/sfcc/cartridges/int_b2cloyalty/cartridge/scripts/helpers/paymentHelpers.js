@@ -1,5 +1,6 @@
 'use strict'
 
+let Money = require('dw/value/Money');
 let collections = require('*/cartridge/scripts/util/collections');
 
 /**
@@ -13,6 +14,10 @@ function getRemainingAmount(basket, validateTax) {
     collections.forEach(paymentInstruments, function (pi) {
         remainingAmount = remainingAmount.subtract(pi.paymentTransaction.amount);
     });
+    if (remainingAmount.value < 0) {
+        // Never report negative amounts even though it can happen
+        remainingAmount = Money(0.0, basket.getCurrencyCode())
+    }
     return remainingAmount;
 }
 

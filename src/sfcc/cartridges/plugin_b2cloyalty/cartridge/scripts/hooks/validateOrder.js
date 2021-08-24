@@ -1,7 +1,7 @@
 'use strict';
 
 var Resource = require('dw/web/Resource');
-let collections = require('*/cartridge/scripts/util/collections');
+var paymentHelpers = require('*/cartridge/scripts/helpers/paymentHelpers');
 
 var base = module.superModule;
 
@@ -16,14 +16,7 @@ var base = module.superModule;
 function validateOrder(basket, validateTax) {
     var result = base.validateOrder(basket, validateTax);
     if (!result.error) {
-        var paymentInstruments = basket.paymentInstruments;
-
-        var remainingAmount = basket.totalGrossPrice;
-        var piToPayRemainder = null;
-
-        collections.forEach(paymentInstruments, function (pi) {
-            remainingAmount = remainingAmount.subtract(pi.paymentTransaction.amount);
-        });
+        var remainingAmount = paymentHelpers.getRemainingAmount(basket);
         if (remainingAmount.value > 0) {
             result.error = true;
             result.message = Resource.msg('cart.error.payment.notenough', 'cart', null);

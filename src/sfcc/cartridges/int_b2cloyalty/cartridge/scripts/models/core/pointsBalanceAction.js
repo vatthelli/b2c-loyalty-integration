@@ -1,5 +1,7 @@
 'use strict';
 
+var Site = require('dw/system/Site');
+
 /**
  * @object {Class}
  * @typedef PointsBalanceAction This class is used to build requests for getPointsBalance REST API
@@ -24,9 +26,9 @@ function PointsBalanceAction(profile) {
      */
     /** @type {pointsBalanceAction} */
     this.requestObject = {
-        LoyaltyProgramMemberId: 'Member ID',
-        ProgramCurrencyName: 'Dollares',
-        ProgramName: this.profile.getFirstName(),
+        LoyaltyProgramMemberId: this.profile.custom.b2cloyalty_loyaltyProgramMemberId,
+        ProgramCurrencyName: Site.getCurrent().getCustomPreferenceValue('b2cloyalty_programCurrencyName'),
+        ProgramName: Site.getCurrent().getCustomPreferenceValue('b2cloyalty_programName')
     };
 }
 
