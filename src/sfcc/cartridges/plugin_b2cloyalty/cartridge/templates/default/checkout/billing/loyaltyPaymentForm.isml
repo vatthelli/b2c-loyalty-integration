@@ -24,3 +24,11 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-12 loyalty-amount-added-section">
+        <div class="mb-sm-3">
+            <p class="summary-section-label loyalty-amount-added-label">${Resource.msg('label.order.loyalty.amount.added', 'confirmation', null)}<span class="loyalty-amount-added" /></p>
+        </div>
+    </div>
+</div>
