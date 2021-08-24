@@ -8,6 +8,12 @@ var summaryHelpers = require('base/checkout/summary');
 var formHelpers = require('base/checkout/formErrors');
 var scrollAnimate = require('base/components/scrollAnimate');
 
+///////////////////////////////////////////////////////////////////////////////
+// LOYALTY NOTE!
+// UNFORTUNATELY THIS FILE HAD TO BE OVERRIDDEN TO INTRODUCE LOYALTY FEATURES.
+// THE PARTS THAT HAVE BEEN CHANGED HAVE BEEN CLEARLY TAGGED WITH LOYALTY SO
+// THAT ANY MERGING WILL BE MADE SIMPLER
+///////////////////////////////////////////////////////////////////////////////
 
 /**
  * Create the jQuery Checkout Plugin.
