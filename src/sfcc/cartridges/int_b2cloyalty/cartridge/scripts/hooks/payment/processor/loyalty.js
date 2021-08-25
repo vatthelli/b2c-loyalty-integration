@@ -50,7 +50,6 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
             serverErrors.push('Something blew up!');
         }
     }
-
     if (result && result.status == 'OK') {
         var pointAmount = paymentInformation.amount.value;
         var allowedPointAmount = result.object.outputValues.pointsBalance;
@@ -120,4 +119,3 @@ function Authorize(orderNumber, paymentInstrument, paymentProcessor) {
 
 exports.Handle = Handle;
 exports.Authorize = Authorize;
-exports.createToken = createToken;
