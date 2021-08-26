@@ -1,0 +1,14 @@
+<form action="${URLUtils.url('Loyalty-SaveUnregister')}" class="edit-loyalty-form" method="POST" <isprint value="${pdict.profileForm.attributes}" encoding="off" />>
+
+    <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
+
+    <div class="row">
+        <div class="col">
+            <a href="${URLUtils.url('Account-Show')}" class="btn btn-block btn-outline-primary">${Resource.msg('profile.loyalty.form.cta.cancel','account',null)}</a>
+        </div>
+        <div class="col">
+            <button type="submit" name="save" class="btn btn-save btn-block btn-primary">${Resource.msg('profile.loyalty.status.cta.unregister','account',null)}</button>
+        </div>
+    </div>
+
+</form>

@@ -125,7 +125,7 @@
         START: Loyalty B2C Commerce Cloud Integration : Loyalty Member Acquisition : New Customer
     </iscomment>
     <div>
-        <h4>${Resource.msg('registerform.loyalty.entrollcallout', 'registration', null)}</h4>
+        <h4>${Resource.msg('registerform.loyalty.enrollcallout', 'registration', null)}</h4>
     </div>
     <div class="b2c-loyalty-integration-asset-about-loyalty-program">
         <a href="${'#'}">
