@@ -3,7 +3,7 @@
     assets.addJs('/js/loyalty.js');
 </isscript>
 
-<isif condition="${pdict.customer.isLoyaltyCustomer}">
+<isif condition="${pdict.customer.loyalty.isLoyaltyCustomer}">
     <div class="form-nav billing-nav loyalty-payment-information" data-payment-method-id="LOYALTY">
         <isinclude template="checkout/billing/paymentOptions/loyaltyPaymentContent" />
     </div>

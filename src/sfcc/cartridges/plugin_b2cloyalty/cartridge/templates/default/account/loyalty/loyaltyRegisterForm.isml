@@ -1,0 +1,60 @@
+<form action="${URLUtils.url('Loyalty-SaveEnroll')}" class="edit-loyalty-form" method="POST" <isprint value="${pdict.profileForm.attributes}" encoding="off" />>
+
+    <div class="b2c-loyalty-integration-asset-about-loyalty-program">
+        <a href="${'#'}">
+            ${Resource.msg('registerform.loyalty.aboutloyaltyprogram', 'registration', null)}
+        </a>
+    </div>
+    <div class="form-group required custom-control custom-checkbox">
+        <input
+                type="checkbox"
+                class="custom-control-input" id="b2c-loyalty-opt-in-status"
+        <isprint value=${pdict.profileForm.loyalty.b2cloyaltyoptinstatus.attributes} encoding="off" />
+        >
+        <label class="custom-control-label" for="b2c-loyalty-opt-in-status">
+            <isprint value="${pdict.profileForm.loyalty.b2cloyaltyoptinstatus.label}" encoding="htmlcontent" />
+        </label>
+        <div class="invalid-feedback"></div>
+    </div>
+
+    <div class="b2c-loyalty-integration-asset-about-loyalty-terms-and-conditions-head">
+        <div>
+            <h6>${Resource.msg('registerform.loyalty.termsandconditions', 'registration', null)}</h6>
+        </div>
+    </div>
+
+    <div class="b2c-loyalty-integration-asset-about-loyalty-terms-and-conditions-body">
+        <ul class="list-unstyled">
+            <li>Lorem ipsum dolor sit amet</li>
+            <li>Consectetur adipiscing elit</li>
+            <li>Integer molestie lorem at massa</li>
+            <li>Facilisis in pretium nisl aliquet</li>
+            <li>Nulla volutpat aliquam velit
+                <ul>
+                    <li>Phasellus iaculis neque</li>
+                    <li>Purus sodales ultricies</li>
+                    <li>Vestibulum laoreet porttitor sem</li>
+                    <li>Ac tristique libero volutpat at</li>
+                </ul>
+            </li>
+            <li>Faucibus porta lacus fringilla vel</li>
+            <li>Aenean sit amet erat nunc</li>
+            <li>Eget porttitor lorem</li>
+        </ul>
+    </div>
+
+    <input name="${pdict.csrf.tokenName}" type="hidden" value="${pdict.csrf.token}"/>
+
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-block btn-outline-primary"
+               href="${URLUtils.url('Account-Show')}">${Resource.msg('profile.loyalty.form.cta.cancel', 'account', null)}</a>
+        </div>
+        <div class="col">
+            <button class="btn btn-save btn-block btn-primary" name="save" type="submit">
+                ${Resource.msg('profile.loyalty.status.cta.enroll', 'account', null)}
+            </button>
+        </div>
+    </div>
+
+</form>

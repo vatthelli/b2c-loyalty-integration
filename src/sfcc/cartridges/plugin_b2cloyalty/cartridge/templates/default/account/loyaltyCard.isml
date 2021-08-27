@@ -2,19 +2,27 @@
     <div class="card-header clearfix">
         <h2 class="pull-left">${Resource.msg('profile.loyalty.label.loyalty','account',null)}</h2>
     </div>
-    <isif condition="${pdict.loyalty.b2cloyalty_optInStatus}">
+    <isif condition="${pdict.account.loyalty.isLoyaltyCustomer}">
         <div class="card-body">
             <div>
                 <div>${Resource.msg('profile.loyalty.status.enrolled','account',null)}</div>
             </div>
         </div>
-    <iselse>
+        <div class="card-footer card-footer-border text-center">
+            <a href="${URLUtils.url('Loyalty-Unregister')}" class="card-link" aria-label="${Resource.msg('profile.loyalty.status.cta.label.unregister','account',null)}">${Resource.msg('profile.loyalty.status.cta.unregister','account',null)}</a>
+        </div>
+    <iselse/>
         <div class="card-body">
             <div>
                 <div>${Resource.msg('profile.loyalty.status.notenrolled','account',null)}</div>
             </div>
         </div>
+        <div class="card-footer card-footer-border text-center">
+            <a href="${URLUtils.url('Loyalty-Register')}" class="card-link" aria-label="${Resource.msg('profile.loyalty.status.cta.label.enroll','account',null)}">${Resource.msg('profile.loyalty.status.cta.enroll','account',null)}</a>
+        </div>
     </isif>
-
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
 </div>
 

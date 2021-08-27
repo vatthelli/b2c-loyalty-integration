@@ -9,48 +9,6 @@ var userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
 
 /**
- * Account-LoyaltyUnregister : The Account-LoyaltyUnregister endpoint renders the loyalty unregister page. This page allows the shopper to unregsiter the profile from loyalty program.
- * @name Base/Account-LoyaltyUnregister
- * @function
- * @memberof Account
- * @param {middleware} - server.middleware.https
- * @param {middleware} - csrfProtection.generateToken
- * @param {middleware} - userLoggedIn.validateLoggedIn
- * @param {middleware} - consentTracking.consent
- * @param {category} - sensitive
- * @param {renders} - isml
- * @param {serverfunction} - get
- */
-server.get(
-    'LoyaltyUnregister',
-    server.middleware.https,
-    csrfProtection.generateToken,
-    userLoggedIn.validateLoggedIn,
-    consentTracking.consent,
-    function (req, res, next) {
-        var Resource = require('dw/web/Resource');
-        var URLUtils = require('dw/web/URLUtils');
-
-        var profileForm = server.forms.getForm('profile');
-        profileForm.clear();
-        res.render('account/password', {
-            profileForm: profileForm,
-            breadcrumbs: [
-                {
-                    htmlValue: Resource.msg('global.home', 'common', null),
-                    url: URLUtils.home().toString()
-                },
-                {
-                    htmlValue: Resource.msg('page.title.myaccount', 'account', null),
-                    url: URLUtils.url('Account-Show').toString()
-                }
-            ]
-        });
-        next();
-    }
-);
-
-/**
  * @description Extend the SubmitRegistration method to save loyalty enroll status on customer profile level.
  * When a customer registers via the storefront -- a profile will be updated and after with b2c-crm-sync sent to the Salesforce Platform.
  *
@@ -71,30 +29,6 @@ server.append('SubmitRegistration', function (req, res, next) {
             });
 
         }
-    });
-    next();
-});
-
-/**
- * @description Extend the Show method to add loyalty data to the model
- * When a customer open my account page via the storefront -- a customer data will be extended with Loyalty information.
- *
- * @param name {String} Name of the route to modify
- * @param arguments {Function} List of functions to be appended
- */
-server.append('Show', function (req, res, next) {
-    this.on('route:BeforeComplete', function (requ, resp) {
-        var viewData = resp.getViewData();
-
-        if (customer.isAuthenticated()) {
-            var customerProfile = customer.getProfile();
-
-            viewData.loyalty = {
-                b2cloyalty_optInStatus : customerProfile.custom.b2cloyalty_optInStatus
-            }
-        }
-
-        resp.setViewData(viewData);
     });
     next();
 });
