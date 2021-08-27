@@ -38,6 +38,7 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
     var currentBasket = basket;
     var serverErrors = [];
     var result = null;
+
     if (!customer.profile) {
         serverErrors.push('Customer not logged in. Cannot use points!');
     } else {
@@ -52,8 +53,8 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
     }
     if (result && result.status == 'OK') {
         var pointAmount = paymentInformation.amount.value;
-        var allowedPointAmount = result.object.outputValues.pointsBalance;
-        if (pointAmount > allowedPointAmount) {
+        var allowedPointAmount = result.object[0].outputValues.PointsBalance;
+        if (!allowedPointAmount || pointAmount > allowedPointAmount) {
             serverErrors.push('Not enough points. Expected: ' + pointAmount + ', allowed: ' + allowedPointAmount);
         } else {
             var moneyAmount = pointsToMoneyHelpers.pointsToMoney(pointAmount, currentBasket.getCurrencyCode());
@@ -94,7 +95,8 @@ function Authorize(orderNumber, paymentInstrument, paymentProcessor) {
         serverErrors.push('Customer not logged in. Cannot use points!');
     } else {
         var amount = paymentInstrument.getPaymentTransaction().getAmount();
-        var redemptionRequest = new (require('*/cartridge/scripts/models/core/redemptionRequest'))(customer.profile, transactionId, amount);
+        var pointsAmount = pointsToMoneyHelpers.moneyToPoints(pointAmount, currentBasket.getCurrencyCode());
+        var redemptionRequest = new (require('*/cartridge/scripts/models/core/redemptionRequest'))(customer.profile, transactionId, pointsAmount);
         var requestBody = redemptionRequest.getRequestBody();
 
         LOGGER.info('Redeeming loyalty points. Here is the request body: {0}', requestBody);
@@ -103,16 +105,19 @@ function Authorize(orderNumber, paymentInstrument, paymentProcessor) {
             serverErrors.push('Something blew up when redeeming loyalty ponts!');
         }
     }
-    try {
-        Transaction.wrap(function () {
-            paymentInstrument.paymentTransaction.setTransactionID(transactionId);
-            paymentInstrument.paymentTransaction.setPaymentProcessor(paymentProcessor);
-        });
-    } catch (e) {
-        error = true;
-        serverErrors.push(
-            Resource.msg('error.technical', 'checkout', null)
-        );
+    if (serverErrors.length == 0) {
+        try {
+            Transaction.wrap(function () {
+                paymentInstrument.paymentTransaction.setTransactionID(transactionId);
+                paymentInstrument.paymentTransaction.setPaymentProcessor(paymentProcessor);
+            });
+        } catch (e) {
+            // TODO: This is bad - we've taken the points but then crash out without refunding
+            error = true;
+            serverErrors.push(
+                Resource.msg('error.technical', 'checkout', null)
+            );
+        }
     }
     return { fieldErrors: fieldErrors, serverErrors: serverErrors, error: error };
 }

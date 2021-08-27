@@ -10,7 +10,7 @@ function pointsToMoney(points, currencyCode) {
 }
 
 function moneyToPoints(money) {
-    return money.value * CONVERSION_FACTOR_POINTS_TO_MONEY;
+    return Number(money.value * CONVERSION_FACTOR_POINTS_TO_MONEY).toFixed();
 }
 
 module.exports = {
