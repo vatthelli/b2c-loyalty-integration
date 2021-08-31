@@ -1,0 +1,91 @@
+{
+  "compositeResponse": [
+    {
+      "body": {
+        "totalSize": 1,
+        "done": true,
+        "records": [
+          {
+            "attributes": {
+              "type": "LoyaltyProgramMember",
+              "url": "/services/data/v52.0/sobjects/LoyaltyProgramMember/0lM5g0000004Q1PEAU"
+            },
+            "Id": "0lM5g0000004Q1PEAU",
+            "ContactId": "0035g00000D3L0LAAV",
+            "AccountId": null,
+            "MembershipNumber": "24345671"
+          }
+        ]
+      },
+      "httpHeaders": {},
+      "httpStatusCode": 200,
+      "referenceId": "refLoyaltyProgramMember"
+    },
+    {
+      "body": {
+        "totalSize": 2,
+        "done": true,
+        "records": [
+          {
+            "attributes": {
+              "type": "LoyaltyMemberCurrency",
+              "url": "/services/data/v52.0/sobjects/LoyaltyMemberCurrency/0lz5g0000004EIbAAM"
+            },
+            "Name": "Reward Points",
+            "PointsBalance": 18068.0,
+            "TotalPointsAccrued": 24653.0
+          },
+          {
+            "attributes": {
+              "type": "LoyaltyMemberCurrency",
+              "url": "/services/data/v52.0/sobjects/LoyaltyMemberCurrency/0lz5g0000004EIcAAM"
+            },
+            "Name": "Tier Points",
+            "PointsBalance": 5238.0,
+            "TotalPointsAccrued": 5238.0
+          }
+        ]
+      },
+      "httpHeaders": {},
+      "httpStatusCode": 200,
+      "referenceId": "refMemberCurrency"
+    },
+    {
+      "body": {
+        "totalSize": 1,
+        "done": true,
+        "records": [
+          {
+            "attributes": {
+              "type": "LoyaltyMemberTier",
+              "url": "/services/data/v52.0/sobjects/LoyaltyMemberTier/0ly5g0000004EMeAAM"
+            },
+            "Name": "Platinum",
+            "LoyaltyTierGroupId": "0lt5g0000004ELPAA2"
+          }
+        ]
+      },
+      "httpHeaders": {},
+      "httpStatusCode": 200,
+      "referenceId": "refMemberTier"
+    },
+    {
+      "body": {
+        "totalSize": 1,
+        "done": true,
+        "records": [
+          {
+            "attributes": {
+              "type": "LoyaltyTierGroup",
+              "url": "/services/data/v52.0/sobjects/LoyaltyTierGroup/0lt5g0000004ELPAA2"
+            },
+            "Name": "Status Tier Group"
+          }
+        ]
+      },
+      "httpHeaders": {},
+      "httpStatusCode": 200,
+      "referenceId": "refMemberTierGroup"
+    }
+  ]
+}

@@ -153,6 +153,12 @@ server.post(
                 // Send account edited email
                 accountHelpers.sendAccountEditedEmail(customer.profile);
 
+                require('dw/system/HookMgr').callHook(
+                    'app.customer.updated',
+                    'updated',
+                    customer.getProfile()
+                );
+
                 res.json({
                     success: true,
                     redirectUrl: URLUtils.url('Account-Show').toString()
@@ -231,6 +237,13 @@ server.post(
                 // Send account edited email
                 accountHelpers.sendAccountEditedEmail(customer.profile);
 
+                // invoke b2c-crm-sync logic to sync customer
+                require('dw/system/HookMgr').callHook(
+                    'app.customer.updated',
+                    'updated',
+                    profile
+                );
+
                 res.json({
                     success: true,
                     redirectUrl: URLUtils.url('Account-Show').toString()
@@ -253,13 +266,76 @@ server.post(
     }
 );
 
+/**
+ * Loyalty-Header : The Loyalty-Header endpoint is used as a remote include to include the login/account menu in the header
+ * @name B2CLoyalty/Loyalty-Header
+ * @function
+ * @memberof Loyalty
+ * @param {middleware} - server.middleware.include
+ * @param {querystringparameter} - mobile - a flag determining whether or not the shopper is on a mobile sized screen this determines what isml template to render
+ * @param {category} - sensitive
+ * @param {renders} - isml
+ * @param {serverfunction} - get
+ */
+server.get('Header', server.middleware.include, function (req, res, next) {
+    var Customer = require('dw/customer/Customer');
+    if (req.currentCustomer.profile) {
+        res.render('account/loyaltyHeader', {
+            isLoggedIn: !!req.currentCustomer.profile,
+            isLoyaltyCustomer: req.currentCustomer instanceof Customer ? req.currentCustomer.profile.custom.b2cloyalty_optInStatus : req.currentCustomer.raw.profile.custom.b2cloyalty_optInStatus
+        });
+    }
+    next();
+});
+
+/**
+ * Loyalty-Show : The Account-Dashboard endpoint will render the shopper's loyalty dashboard page.
+ * @name B2CLoyalty/Loyalty-Dashboard
+ * @function
+ * @memberof Loyalty
+ * @param {middleware} - server.middleware.https
+ * @param {middleware} - userLoggedIn.validateLoggedIn
+ * @param {middleware} - consentTracking.consent
+ * @param {querystringparameter} - registration - A flag determining whether or not this is a newly registered account
+ * @param {category} - senstive
+ * @param {renders} - isml
+ * @param {serverfunction} - get
+ */
 server.get(
     'Dashboard',
     userLoggedIn.validateLoggedIn,
     consentTracking.consent,
     loyaltyEnrollment.validateLoyaltyEnrolled,
-    function(req, res, next) {
+    function (req, res, next) {
+        var Resource = require('dw/web/Resource');
+        var URLUtils = require('dw/web/URLUtils');
+        var accountHelpers = require('*/cartridge/scripts/account/accountHelpers');
+        var LoyaltyFactory = require('*/cartridge/scripts/factories/loyaltyFactory');
 
+        // NOTE: The following will trigger a request to Loyalty Cloud, adding to the latency of the full page load
+        var loyaltyModel = LoyaltyFactory.get({parts: ['base', 'memberDetails']});
+
+        var accountModel = accountHelpers.getAccountModel(req);
+
+        res.render('account/loyalty/loyaltyDashboard', {
+            loyalty: loyaltyModel,
+            account: accountModel,
+            breadcrumbs: [
+                {
+                    htmlValue: Resource.msg('global.home', 'common', null),
+                    url: URLUtils.home().toString()
+                },
+                {
+                    htmlValue: Resource.msg('page.title.myaccount', 'account', null),
+                    url: URLUtils.url('Account-Show').toString()
+                },
+                {
+                    htmlValue: Resource.msg('label.loyalty.dashboard', 'account', null),
+                    url: URLUtils.url('Loyalty-Dashboard').toString()
+                }
+            ]
+        });
+        next();
     }
 )
 
