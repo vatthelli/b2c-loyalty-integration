@@ -45,16 +45,33 @@ var exports = {
                     $('.payment-information').removeClass('checkout-hidden');
                     $('.credit-card-selection-new').removeClass('checkout-hidden');
 
+                    if (data && data.order && data.order.billing && data.order.billing.payment && data.order.billing.payment.selectedPaymentInstruments) {
+                        $('.loyalty-amount-info-section').removeClass('checkout-hidden');
+                        let pis = data.order.billing.payment.selectedPaymentInstruments;
+                        let loyaltyPi = pis.find(elem => 'LOYALTY' === elem.paymentMethod);
+                        $('.loyalty-amount-added').text(loyaltyPi.formattedAmount);
+                        $('.loyalty-amount-remaining').text(data.order.billing.payment.remainingAmount.formattedAmount);
+                        let remainingAmount = data.order.billing.payment.remainingAmount.amount;
+                        $('#checkout-main').data('remaining-amount', remainingAmount);
+                        if (remainingAmount <= 0) {
+                            $('.payment-information').addClass('checkout-hidden');
+                            $('.credit-card-selection-new').addClass('checkout-hidden');
+                        }
+                    } else {
+                        $('.loyalty-amount-info-section').addClass('checkout-hidden');
+                        $('.loyalty-amount-added').text('');
+                        $('.loyalty-amount-remaining').text('');
+                    }
+
                     // look for field validation errors
                     if (data.error) {
                         if (data.fieldErrors.length) {
                             data.fieldErrors.forEach(function (error) {
                                 if (Object.keys(error).length) {
-                                    formHelpers.loadFormErrors('.loyalty-payment-form', error);
+                                    formHelpers.loadFormErrors('.loyalty-payment-form-fields', error);
                                 }
                             });
                         }
-
                         if (data.serverErrors.length) {
                             data.serverErrors.forEach(function (error) {
                                 $('.error-message').show();
@@ -80,20 +97,6 @@ var exports = {
                             && data.customer.customerPaymentInstruments.length
                         ) {
                             $('.cancel-new-payment').removeClass('checkout-hidden');
-                        }
-                        if (data && data.order && data.order.billing && data.order.billing.payment && data.order.billing.payment.selectedPaymentInstruments) {
-                            $('.loyalty-amount-info-section').removeClass('checkout-hidden');
-                            let pis = data.order.billing.payment.selectedPaymentInstruments;
-                            let loyaltyPi = pis.find(elem => 'LOYALTY' === elem.paymentMethod);
-                            $('.loyalty-amount-added').text(loyaltyPi.formattedAmount);
-                            $('.loyalty-amount-remaining').text(data.order.billing.payment.remainingAmount.formattedAmount);
-
-                            let remainingAmount = data.order.billing.payment.remainingAmount.amount;
-                            $('#checkout-main').data('remaining-amount', remainingAmount);
-                            if (remainingAmount <= 0) {
-                                $('.payment-information').addClass('checkout-hidden');
-                                $('.credit-card-selection-new').addClass('checkout-hidden');
-                            }
                         }
                     }
                 },

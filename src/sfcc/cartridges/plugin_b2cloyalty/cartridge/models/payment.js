@@ -3,6 +3,7 @@
 var PaymentMgr = require('dw/order/PaymentMgr');
 var PaymentInstrument = require('dw/order/PaymentInstrument');
 var formatMoney = require('dw/util/StringUtils').formatMoney;
+let Money = require('dw/value/Money');
 var assign = require('server/assign');
 var collections = require('*/cartridge/scripts/util/collections');
 var paymentHelpers = require('*/cartridge/scripts/helpers/paymentHelpers');
@@ -46,6 +47,10 @@ function getSelectedPaymentInstruments(selectedPaymentInstruments) {
  */
 function getRemainingAmount(currentBasket) {
     var remainingAmount = paymentHelpers.getRemainingAmount(currentBasket);
+    if (remainingAmount.value < 0) {
+        // Never report negative amounts to the front end even though it can happen
+        remainingAmount = Money(0.0, basket.getCurrencyCode())
+    }
     var results = {
         amount: remainingAmount.value,
         formattedAmount: formatMoney(remainingAmount)
