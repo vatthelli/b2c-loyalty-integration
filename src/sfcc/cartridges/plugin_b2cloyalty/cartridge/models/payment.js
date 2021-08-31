@@ -49,7 +49,7 @@ function getRemainingAmount(currentBasket) {
     var remainingAmount = paymentHelpers.getRemainingAmount(currentBasket);
     if (remainingAmount.value < 0) {
         // Never report negative amounts to the front end even though it can happen
-        remainingAmount = Money(0.0, basket.getCurrencyCode())
+        remainingAmount = Money(0.0, currentBasket.getCurrencyCode())
     }
     var results = {
         amount: remainingAmount.value,
