@@ -2,7 +2,6 @@
 
 var base = module.superModule;
 
-var Customer = require('dw/customer/Customer');
 var LoyaltyFactory = require('*/cartridge/scripts/factories/loyaltyFactory');
 
 /**

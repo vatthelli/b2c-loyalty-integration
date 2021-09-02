@@ -21,8 +21,5 @@
             <a href="${URLUtils.url('Loyalty-Register')}" class="card-link" aria-label="${Resource.msg('profile.loyalty.status.cta.label.enroll','account',null)}">${Resource.msg('profile.loyalty.status.cta.enroll','account',null)}</a>
         </div>
     </isif>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
 </div>
 

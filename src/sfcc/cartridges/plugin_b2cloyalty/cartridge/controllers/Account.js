@@ -4,10 +4,6 @@
 var server = require('server');
 server.extend(module.superModule);
 
-var csrfProtection = require('*/cartridge/scripts/middleware/csrf');
-var userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
-var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
-
 /**
  * @description Extend the SubmitRegistration method to save loyalty enroll status on customer profile level.
  * When a customer registers via the storefront -- a profile will be updated and after with b2c-crm-sync sent to the Salesforce Platform.

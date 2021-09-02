@@ -12,7 +12,8 @@
         },
         "loyalty": {
             "getPointsBalance": "services/data/v52.0/actions/standard/getPointsBalance",
-            "redemption": "services/data/v52.0/connect/loyalty/redemption"
+            "redemption": "services/data/v52.0/connect/loyalty/redemption",
+            "composite": "/services/data/v52.0/composite"
         }
     },
     "jobs": {

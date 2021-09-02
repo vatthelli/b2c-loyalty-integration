@@ -21,7 +21,7 @@ function validateLoyaltyEnrolled(req, res, next) {
 }
 
 /**
- * Middleware validating if user unregistered into loyalty
+ * Middleware validating if user unregistered from loyalty
  * @param {Object} req - Request object
  * @param {Object} res - Response object
  * @param {Function} next - Next call in the middleware chain
@@ -63,7 +63,7 @@ function validateLoyaltyEnrolledAjax(req, res, next) {
 }
 
 /**
- * Middleware validating if user enrolled into loyalty from ajax request
+ * Middleware validating if user unregistered into loyalty from ajax request
  * @param {Object} req - Request object
  * @param {Object} res - Response object
  * @param {Function} next - Next call in the middleware chain
