@@ -5,7 +5,7 @@
         <div class="form-group
             <isif condition=${loyaltyPaymentFields.amount.mandatory === true}>required</isif>
             ${loyaltyPaymentFields.amount.htmlName}">
-            <label class="form-control-label" for="amount">Loyalty amount</label>
+            <label class="form-control-label" for="amount">${Resource.msg('msg.loyalty.amount', 'payment', null)}</label>
             <input type="text" class="form-control" id="amount" value="" <isprint
                 value=${loyaltyPaymentFields.amount.attributes} encoding="off" />>
             <div class="invalid-feedback" id="loyaltyPaymentInvalidMessage"></div>
@@ -19,7 +19,7 @@
         <div class="mb-sm-3">
             <button class="btn btn-primary btn-block submit-loyaltypayment" id="submit-loyaltypayment" type="submit" name="submit"
                 value="submit-loyaltypayment">
-                Pay with points
+                ${Resource.msg('button.payWithPoints', 'payment', null)}
             </button>
         </div>
     </div>
@@ -27,16 +27,16 @@
 
 
 <div class="row">
-    <div class="col-12 loyalty-amount-info-section checkout-hidden">
+    <div class="col-12 loyalty-amount-info-section <isif condition=${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY == null || pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.value <= 0}>checkout-hidden</isif>">
         <div class="mb-sm-3">
-            <p class="summary-section-label loyalty-amount-added-label">${Resource.msg('label.order.loyalty.amount.added', 'confirmation', null)}<span class="loyalty-amount-added" /></p>
+            <p class="summary-section-label loyalty-amount-added-label">${Resource.msg('label.order.loyalty.amount.added', 'payment', null)}<span class="loyalty-amount-added">${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted}</span></p>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-12 loyalty-amount-info-section checkout-hidden">
+    <div class="col-12 loyalty-amount-info-section <isif condition=${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY == null || pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.value <= 0}>checkout-hidden</isif>">
         <div class="mb-sm-3">
-            <p class="summary-section-label loyalty-amount-remaining-label">${Resource.msg('label.order.loyalty.amount.remaining', 'confirmation', null)}<span class="loyalty-amount-remaining" /></p>
+            <p class="summary-section-label loyalty-amount-remaining-label">${Resource.msg('label.order.loyalty.amount.remaining', 'payment', null)}<span class="loyalty-amount-remaining">${pdict.order.billing.payment.remainingAmount.formatted}</span></p>
         </div>
     </div>
 </div>

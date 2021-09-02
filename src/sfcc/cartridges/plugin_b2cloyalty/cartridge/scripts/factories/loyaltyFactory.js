@@ -1,7 +1,10 @@
 'use strict';
 
 var Customer = require('dw/customer/Customer');
+var Money = require('dw/value/Money');
+var collections = require('*/cartridge/scripts/util/collections');
 var ServiceMgr = require('*/cartridge/scripts/services/ServiceMgr');
+var CONSTANTS = require('*/cartridge/scripts/loyaltyConstants');
 
 /**
  * @type {dw/system/Log}
@@ -9,6 +12,7 @@ var ServiceMgr = require('*/cartridge/scripts/services/ServiceMgr');
 var LOGGER = require('dw/system/Logger').getLogger('b2cloyalty', 'scripts.factories.loyaltyFactory');
 
 function populateBaseLoyaltyAttributes(profile, loyaltyModel) {
+    var BasketMgr = require('dw/order/BasketMgr');
     loyaltyModel.isLoyaltyCustomer = customer instanceof Customer ? customer.profile.custom.b2cloyalty_optInStatus : customer.raw.profile.custom.b2cloyalty_optInStatus;
     loyaltyModel.loyaltyCustomerID = customer instanceof Customer ? customer.profile.custom.b2cloyalty_loyaltyProgramMemberId : customer.raw.profile.custom.b2cloyalty_loyaltyProgramMemberId;
 }

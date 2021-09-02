@@ -7,12 +7,12 @@ let Money = require('dw/value/Money');
 var assign = require('server/assign');
 var collections = require('*/cartridge/scripts/util/collections');
 var paymentHelpers = require('*/cartridge/scripts/helpers/paymentHelpers');
-
+var moneyModel = require('*/cartridge/models/money');
 
 var base = module.superModule;
 
 /**
- * Overrides SFRA version and adds formattedAmount
+ * Overrides SFRA version and adds amountMoney
  * @param {dw.util.ArrayList<dw.order.PaymentInstrument>} selectedPaymentInstruments - ArrayList
  *      of payment instruments that the user is using to pay for the current basket
  * @returns {Array} Array of objects that contain information about the selected payment instruments
@@ -22,7 +22,7 @@ function getSelectedPaymentInstruments(selectedPaymentInstruments) {
         var results = {
             paymentMethod: paymentInstrument.paymentMethod,
             amount: paymentInstrument.paymentTransaction.amount.value,
-            formattedAmount: formatMoney(paymentInstrument.paymentTransaction.amount)
+            amountMoney: moneyModel.toMoneyModel(paymentInstrument.paymentTransaction.amount)
         };
         if (paymentInstrument.paymentMethod === 'CREDIT_CARD') {
             results.lastFour = paymentInstrument.creditCardNumberLastDigits;
@@ -51,15 +51,21 @@ function getRemainingAmount(currentBasket) {
         // Never report negative amounts to the front end even though it can happen
         remainingAmount = Money(0.0, currentBasket.getCurrencyCode())
     }
-    var results = {
-        amount: remainingAmount.value,
-        formattedAmount: formatMoney(remainingAmount)
-    }
-    return results;
+    return moneyModel.toMoneyModel(remainingAmount);
+}
+
+function getTotalByPaymentMethod(paymentInstruments, currencyCode) {
+    var result = {};
+    collections.forEach(paymentInstruments, function (pi) {
+        var currentTotalModel = result[pi.paymentMethod];
+        var newTotalMoney = currentTotalModel ? Money(currentTotalModel.value, currencyCode).add(pi.paymentTransaction.amount) : pi.paymentTransaction.amount;
+        result[pi.paymentMethod] = moneyModel.toMoneyModel(newTotalMoney);
+    });
+    return result;
 }
 
 /**
- * Payment class that represents payment information for the current basket
+ * Overrides SFRA and adds the functions listed above.
  * @param {dw.order.Basket} currentBasket - the target Basket object
  * @param {dw.customer.Customer} currentCustomer - the associated Customer object
  * @param {string} countryCode - the associated Site countryCode
@@ -73,6 +79,7 @@ function Payment(currentBasket, currentCustomer, countryCode) {
         getSelectedPaymentInstruments(paymentInstruments) : null;
 
     this.remainingAmount = getRemainingAmount(currentBasket);
+    this.totalByPaymentMethod = getTotalByPaymentMethod(currentBasket.paymentInstruments, currentBasket.getCurrencyCode());
 }
 
 module.exports = Payment;

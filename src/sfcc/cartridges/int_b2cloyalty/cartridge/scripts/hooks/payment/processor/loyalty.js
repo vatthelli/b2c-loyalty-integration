@@ -36,12 +36,17 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
     var fieldErrorsMap = new HashMap();
     var fieldErrors = [];
     
-    // Remove all previous loyalty payment instruments
+    // Remove all previous loyalty payment instruments. Also remove all CC instruments. It may
+    // sound unintuitive, but we really want to add credit card instruments last. If we update
+    // the loyalty PI, then we have to update the CC PI as well, which means we have to remove
+    // it at this point
     Transaction.wrap(function () {
-        var paymentInstruments = currentBasket.getPaymentInstruments(
-            CONSTANTS.LOYALTY_PAYMENT_METHOD_ID
-        );
+        var paymentInstruments = currentBasket.getPaymentInstruments(CONSTANTS.LOYALTY_PAYMENT_METHOD_ID);
         collections.forEach(paymentInstruments, function (item) {
+            currentBasket.removePaymentInstrument(item);
+        });
+        var ccPaymentInstruments = currentBasket.getPaymentInstruments(PaymentInstrument.METHOD_CREDIT_CARD);
+        collections.forEach(ccPaymentInstruments, function (item) {
             currentBasket.removePaymentInstrument(item);
         });
     });
@@ -50,12 +55,14 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
 
     if (!customer.profile) {
         serverErrors.push(Resource.msg('error.customer.not.logged.in', 'loyaltyPayment', null));
-    } else if (!pointAmount || pointAmount < 1) {
+    } else if (pointAmount == null || pointAmount < 0) {
         fieldErrorsMap.put(paymentInformation.amount.htmlName, Resource.msg('error.amount.negativeOrZero', 'loyaltyPayment', null));
+    } else if (pointAmount == 0) {
+        // 0 points means removing any loyalty and CC transactions but not adding a new one, which is a valid case
+        return {fieldErrors: [], serverErrors: [], error: false};
     } else {
         var pointsBalanceAction = new (require('*/cartridge/scripts/models/core/pointsBalanceAction'))(customer.profile);
         var requestBody = pointsBalanceAction.getRequestBody();
-
         LOGGER.info('Checking available loyalty points. Here is the request body: {0}', requestBody);
         result = ServiceMgr.callRestService('loyalty', 'getPointsBalance', requestBody);
         if (result.status != 'OK') {
@@ -64,22 +71,20 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
     }
 
     if (result && result.status == 'OK') {
-        var pointAmount = paymentInformation.amount.value;
         var allowedPointAmount = result.object[0].outputValues.PointsBalance;
         if (!allowedPointAmount || pointAmount > allowedPointAmount) {
             fieldErrorsMap.put(paymentInformation.amount.htmlName, Resource.msgf('error.points.notEnough', 'loyaltyPayment', null, pointAmount, allowedPointAmount));
         } else {
             var moneyAmount = pointsToMoneyHelpers.pointsToMoney(pointAmount, currentBasket.getCurrencyCode());
             var remainingAmount = paymentHelpers.getRemainingAmount(basket);
-            if (moneyAmount.value > remainingAmount.value) {
-                var remainingAmountInPoints = pointsToMoneyHelpers.moneyToPoints(remainingAmount);
-                fieldErrorsMap.put(paymentInformation.amount.htmlName, Resource.msgf('error.points.tooMany', 'loyaltyPayment', null, pointAmount, remainingAmountInPoints));
+            var remainingAmountAsPoints = pointsToMoneyHelpers.moneyToPoints(remainingAmount);
+            if (pointAmount > remainingAmountAsPoints) {
+                fieldErrorsMap.put(paymentInformation.amount.htmlName, Resource.msgf('error.points.tooMany', 'loyaltyPayment', null, pointAmount, remainingAmountAsPoints));
             }
         }
     }
 
     var error = serverErrors.length > 0 || !fieldErrorsMap.isEmpty();
-
     if (!error) {
         Transaction.wrap(function () {
             var paymentInstrument = currentBasket.createPaymentInstrument(CONSTANTS.LOYALTY_PAYMENT_METHOD_ID, moneyAmount);
@@ -93,7 +98,6 @@ function Handle(basket, paymentInformation, paymentMethodID, req) {
         }
         fieldErrors = [fieldErrorsObj];
     }
-
     return {fieldErrors: fieldErrors, serverErrors: serverErrors, error: error};
 }
 
@@ -116,7 +120,7 @@ function Authorize(orderNumber, paymentInstrument, paymentProcessor) {
         serverErrors.push(Resource.msg('error.customer.not.logged.in', 'loyaltyPayment', null));
     } else {
         var amount = paymentInstrument.getPaymentTransaction().getAmount();
-        var pointsAmount = pointsToMoneyHelpers.moneyToPoints(pointAmount, currentBasket.getCurrencyCode());
+        var pointsAmount = pointsToMoneyHelpers.moneyToPoints(amount);
         var redemptionRequest = new (require('*/cartridge/scripts/models/core/redemptionRequest'))(customer.profile, transactionId, pointsAmount);
         var requestBody = redemptionRequest.getRequestBody();
 

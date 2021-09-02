@@ -1,0 +1,8 @@
+<div id="loyalty-summary-template" class="summary-details d-none">
+    <div class="loyalty-summary-header payment-info-label">
+        <span>${Resource.msg('msg.payment.type.loyalty', 'confirmation', null)}</span>
+    </div>
+    <div class="loyalty-summary-amount-label">${Resource.msgf('msg.payment.amount.from.loyalty', 'confirmation', null)}
+        <span class="loyalty-summary-amount"></span>
+    </div>
+</div>

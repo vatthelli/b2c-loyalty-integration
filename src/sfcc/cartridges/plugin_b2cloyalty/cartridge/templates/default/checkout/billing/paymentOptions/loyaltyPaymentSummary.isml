@@ -1,0 +1,10 @@
+<div id="loyalty-summary" class="summary-details <isif condition=${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY == null || pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.value <= 0}>d-none</isif>">
+    <div class="loyalty-summary-header payment-info-label">
+        <span>${Resource.msg('msg.payment.type.loyalty', 'confirmation', null)}</span>
+    </div>
+    <div class="loyalty-summary-amount-label">${Resource.msgf('msg.payment.amount.from.loyalty', 'confirmation', null)}
+        <span class="loyalty-summary-amount">${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted}</span>
+    </div>
+</div>
+
+

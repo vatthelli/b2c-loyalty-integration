@@ -3,6 +3,34 @@
 var formHelpers = require('base/checkout/formErrors');
 var scrollAnimate = require('base/components/scrollAnimate');
 
+function updateLoyaltyFieldsOnResponse(data) {
+    // Always set normal payment fields to visible until confirmed that they should be hidden
+    $('.payment-information').removeClass('checkout-hidden');
+    $('.credit-card-selection-new').removeClass('checkout-hidden');
+
+    $('.loyalty-amount-info-section').addClass('checkout-hidden');
+    
+    if (data && data.order && data.order.billing && data.order.billing.payment && data.order.billing.payment.selectedPaymentInstruments) {
+
+        // Payment page
+        if (data.order.billing.payment.totalByPaymentMethod.LOYALTY && data.order.billing.payment.totalByPaymentMethod.LOYALTY.value > 0) {
+            $('.loyalty-amount-added').text(data.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted);
+            $('.loyalty-amount-info-section').removeClass('checkout-hidden');
+            $('.loyalty-amount-remaining').text(data.order.billing.payment.remainingAmount.formatted);
+
+            let remainingAmount = data.order.billing.payment.remainingAmount.value;
+            $('#checkout-main').data('remaining-amount', remainingAmount);
+            if (remainingAmount <= 0) {
+                $('.payment-information').addClass('checkout-hidden');
+                $('.credit-card-selection-new').addClass('checkout-hidden');
+            }        
+        }    
+    } else {
+        $('.loyalty-amount-added').text('');
+        $('.loyalty-amount-remaining').text('');
+    }
+}
+
 var exports = {
     clickLoyaltyPayment: function () {
         // Deals with the payment with loyalty points button press
@@ -35,36 +63,13 @@ var exports = {
                 data: paymentForm,
                 success: function (data) {
                     form.spinner().stop();
-                     // enable the next:Place Order button here
                     $('body').trigger('checkout:enableButton', '.next-step-button button');
-
-                    // Set the whole response to a data attribute. Will be used by subsequent logic
-                    $('#dwfrm_billing').data('last-data-response', data);
-
-                    // Always set normal payment fields to visible until confirmed that they should be hidden
-                    $('.payment-information').removeClass('checkout-hidden');
-                    $('.credit-card-selection-new').removeClass('checkout-hidden');
-
-                    if (data && data.order && data.order.billing && data.order.billing.payment && data.order.billing.payment.selectedPaymentInstruments) {
-                        $('.loyalty-amount-info-section').removeClass('checkout-hidden');
-                        let pis = data.order.billing.payment.selectedPaymentInstruments;
-                        let loyaltyPi = pis.find(elem => 'LOYALTY' === elem.paymentMethod);
-                        $('.loyalty-amount-added').text(loyaltyPi.formattedAmount);
-                        $('.loyalty-amount-remaining').text(data.order.billing.payment.remainingAmount.formattedAmount);
-                        let remainingAmount = data.order.billing.payment.remainingAmount.amount;
-                        $('#checkout-main').data('remaining-amount', remainingAmount);
-                        if (remainingAmount <= 0) {
-                            $('.payment-information').addClass('checkout-hidden');
-                            $('.credit-card-selection-new').addClass('checkout-hidden');
-                        }
-                    } else {
-                        $('.loyalty-amount-info-section').addClass('checkout-hidden');
-                        $('.loyalty-amount-added').text('');
-                        $('.loyalty-amount-remaining').text('');
-                    }
 
                     // look for field validation errors
                     if (data.error) {
+                        // Explicitly call function to update loyalty fields below. This is because
+                        // checkout:updateCheckoutView event should not be triggered on data errors
+                        updateLoyaltyFieldsOnResponse(data);
                         if (data.fieldErrors.length) {
                             data.fieldErrors.forEach(function (error) {
                                 if (Object.keys(error).length) {
@@ -86,18 +91,6 @@ var exports = {
                     } else {
                         $('body').trigger('checkout:updateCheckoutView',
                             { order: data.order, customer: data.customer });
-
-                        if (data.renderedPaymentInstruments) {
-                            $('.stored-payments').empty().html(
-                                data.renderedPaymentInstruments
-                            );
-                        }
-
-                        if (data.customer.registeredUser
-                            && data.customer.customerPaymentInstruments.length
-                        ) {
-                            $('.cancel-new-payment').removeClass('checkout-hidden');
-                        }
                     }
                 },
                 error: function (err) {
@@ -111,6 +104,11 @@ var exports = {
                     }
                 }
             });
+        });
+    },
+    updateCheckoutViewForLoyalty: function () {
+        $('body').on('checkout:updateCheckoutView', function (e, data) {
+            updateLoyaltyFieldsOnResponse(data);
         });
     }
 };
