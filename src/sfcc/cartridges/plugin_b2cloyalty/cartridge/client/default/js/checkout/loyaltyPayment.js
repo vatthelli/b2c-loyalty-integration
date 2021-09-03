@@ -8,26 +8,36 @@ function updateLoyaltyFieldsOnResponse(data) {
     $('.payment-information').removeClass('checkout-hidden');
     $('.credit-card-selection-new').removeClass('checkout-hidden');
 
+    // Set remaining amount to non-0 to prevent checkout progressing even in case of errors. This
+    // attribute will then be updated later in this method with accurate data.
+    $('.payment-information').data('remaining-amount', 1.0);
+
+    // Always start by hiding loyalty fields, and only show it if conditions are right
     $('.loyalty-amount-info-section').addClass('checkout-hidden');
-    
+    $('.loyalty-order-summary-item').addClass('d-none');
+
     if (data && data.order && data.order.billing && data.order.billing.payment && data.order.billing.payment.selectedPaymentInstruments) {
-
-        // Payment page
+        // Remaining amount is a key consideration to checkout flow that is not part of SFRA.
+        // This dictates if and when additional payment methods are required, and when the
+        // user can proceed to confirmation page
+        let remainingAmount = data.order.billing.payment.remainingAmount.value;
+        $('.payment-information').data('remaining-amount', remainingAmount);
+        if (remainingAmount <= 0) {
+            // No more money needed - hide card options
+            $('.payment-information').addClass('checkout-hidden');
+            $('.credit-card-selection-new').addClass('checkout-hidden');
+        }
         if (data.order.billing.payment.totalByPaymentMethod.LOYALTY && data.order.billing.payment.totalByPaymentMethod.LOYALTY.value > 0) {
-            $('.loyalty-amount-added').text(data.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted);
+            // Payment page
             $('.loyalty-amount-info-section').removeClass('checkout-hidden');
-            $('.loyalty-amount-remaining').text(data.order.billing.payment.remainingAmount.formatted);
+            $('.loyalty-points-applied').text(data.order.billing.payment.totalLoyaltyPointsApplied);
+            $('.loyalty-money-amount-applied').text(data.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted);
 
-            let remainingAmount = data.order.billing.payment.remainingAmount.value;
-            $('#checkout-main').data('remaining-amount', remainingAmount);
-            if (remainingAmount <= 0) {
-                $('.payment-information').addClass('checkout-hidden');
-                $('.credit-card-selection-new').addClass('checkout-hidden');
-            }        
-        }    
-    } else {
-        $('.loyalty-amount-added').text('');
-        $('.loyalty-amount-remaining').text('');
+            // Order summary section
+            $('.loyalty-order-summary-item').removeClass('d-none');
+            $('.loyalty-order-summary-item-amount').text('-' + data.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted);
+            $('.grand-total-sum').text(data.order.billing.payment.totalExcludingNonProperPaymentMethods.formatted);
+        }
     }
 }
 
@@ -38,9 +48,7 @@ var exports = {
             e.preventDefault();
             e.stopPropagation();
             var form = $(this);
-
             var loyaltyPaymentForm = $('#dwfrm_billing .loyalty-payment-form-fields :input').serialize();
-
             $('body').trigger('checkout:serializeBilling', {
                 form: $('#dwfrm_billing .loyalty-payment-form-fields'),
                 data: loyaltyPaymentForm,
@@ -50,12 +58,9 @@ var exports = {
                     }
                 }
             });
-
             var paymentForm = loyaltyPaymentForm;
-
-             // disable the next:Place Order button here
+            // disable the next:Place Order button here
             $('body').trigger('checkout:disableButton', '.next-step-button button');
-
             form.spinner().start();
             $.ajax({
                 url: $('#dwfrm_billing').attr('action'),

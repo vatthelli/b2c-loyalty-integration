@@ -10,7 +10,7 @@
 </isif>
 
 <div class="form-nav billing-nav payment-information <isif condition=${pdict.order.billing.payment.remainingAmount.value <= 0}>checkout-hidden</isif>" data-payment-method-id="CREDIT_CARD"
-    data-is-new-payment="${pdict.customer.registeredUser && pdict.customer.customerPaymentInstruments.length ? false : true}">
+    data-is-new-payment="${pdict.customer.registeredUser && pdict.customer.customerPaymentInstruments.length ? false : true}" data-remaining-amount="${pdict.order.billing.payment.remainingAmount.value}">
     <ul class="nav nav-tabs nav-fill payment-options" role="tablist">
         <isinclude template="checkout/billing/paymentOptions/paymentOptionsTabs" />
     </ul>

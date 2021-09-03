@@ -6,8 +6,10 @@ var formatMoney = require('dw/util/StringUtils').formatMoney;
 let Money = require('dw/value/Money');
 var assign = require('server/assign');
 var collections = require('*/cartridge/scripts/util/collections');
+let CONSTANTS = require('*/cartridge/scripts/loyaltyConstants');
 var paymentHelpers = require('*/cartridge/scripts/helpers/paymentHelpers');
 var moneyModel = require('*/cartridge/models/money');
+var pointsToMoneyHelpers = require('*/cartridge/scripts/helpers/pointsToMoneyHelpers');
 
 var base = module.superModule;
 
@@ -49,7 +51,21 @@ function getRemainingAmount(currentBasket) {
     var remainingAmount = paymentHelpers.getRemainingAmount(currentBasket);
     if (remainingAmount.value < 0) {
         // Never report negative amounts to the front end even though it can happen
-        remainingAmount = Money(0.0, currentBasket.getCurrencyCode())
+        remainingAmount = Money(0.0, currentBasket.getCurrencyCode());
+    }
+    return moneyModel.toMoneyModel(remainingAmount);
+}
+
+/**
+ * Retrieves an object with the remaining amount as a number and as a formatted string.
+ * @param {dw.order.Basket} currentBasket 
+ * @returns Object with remaining amount
+ */
+ function getTotalExcludingNonProperPaymentMethods(currentBasket) {
+    var remainingAmount = paymentHelpers.getTotalExcludingNonProperPaymentMethods(currentBasket);
+    if (remainingAmount.value < 0) {
+        // Never report negative amounts to the front end even though it can happen
+        remainingAmount = Money(0.0, currentBasket.getCurrencyCode());
     }
     return moneyModel.toMoneyModel(remainingAmount);
 }
@@ -62,6 +78,16 @@ function getTotalByPaymentMethod(paymentInstruments, currencyCode) {
         result[pi.paymentMethod] = moneyModel.toMoneyModel(newTotalMoney);
     });
     return result;
+}
+
+function getTotalLoyaltyPointsApplied(paymentInstruments, currencyCode) {
+    var totalLoyaltyMoneyAmount = Money(0.0, currencyCode);
+    collections.forEach(paymentInstruments, function (pi) {
+        if (pi.paymentMethod === CONSTANTS.LOYALTY_PAYMENT_METHOD_ID) {
+            totalLoyaltyMoneyAmount = totalLoyaltyMoneyAmount.add(pi.paymentTransaction.amount);
+        }
+    });
+    return pointsToMoneyHelpers.moneyToPoints(totalLoyaltyMoneyAmount);
 }
 
 /**
@@ -79,7 +105,9 @@ function Payment(currentBasket, currentCustomer, countryCode) {
         getSelectedPaymentInstruments(paymentInstruments) : null;
 
     this.remainingAmount = getRemainingAmount(currentBasket);
+    this.totalExcludingNonProperPaymentMethods = getTotalExcludingNonProperPaymentMethods(currentBasket);
     this.totalByPaymentMethod = getTotalByPaymentMethod(currentBasket.paymentInstruments, currentBasket.getCurrencyCode());
+    this.totalLoyaltyPointsApplied = getTotalLoyaltyPointsApplied(currentBasket.paymentInstruments, currentBasket.getCurrencyCode());
 }
 
 module.exports = Payment;

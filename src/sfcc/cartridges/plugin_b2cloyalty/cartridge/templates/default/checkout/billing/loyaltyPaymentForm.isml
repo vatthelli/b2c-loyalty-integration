@@ -7,7 +7,7 @@
             ${loyaltyPaymentFields.amount.htmlName}">
             <label class="form-control-label" for="amount">${Resource.msg('msg.loyalty.amount', 'payment', null)}</label>
             <input type="text" class="form-control" id="amount" value="" <isprint
-                value=${loyaltyPaymentFields.amount.attributes} encoding="off" />>
+                value=${loyaltyPaymentFields.amount.attributes} encoding="off" /> />
             <div class="invalid-feedback" id="loyaltyPaymentInvalidMessage"></div>
             <input type="hidden" name="${pdict.csrf.tokenName}" value="${pdict.csrf.token}"/>
         </div>
@@ -29,14 +29,11 @@
 <div class="row">
     <div class="col-12 loyalty-amount-info-section <isif condition=${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY == null || pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.value <= 0}>checkout-hidden</isif>">
         <div class="mb-sm-3">
-            <p class="summary-section-label loyalty-amount-added-label">${Resource.msg('label.order.loyalty.amount.added', 'payment', null)}<span class="loyalty-amount-added">${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted}</span></p>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-12 loyalty-amount-info-section <isif condition=${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY == null || pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.value <= 0}>checkout-hidden</isif>">
-        <div class="mb-sm-3">
-            <p class="summary-section-label loyalty-amount-remaining-label">${Resource.msg('label.order.loyalty.amount.remaining', 'payment', null)}<span class="loyalty-amount-remaining">${pdict.order.billing.payment.remainingAmount.formatted}</span></p>
+            <p class="summary-section-label loyalty-amount-added-label">
+                <span class="loyalty-points-applied">${pdict.order.billing.payment.totalLoyaltyPointsApplied}</span>
+                ${Resource.msg('label.points.applied', 'payment', null)}
+                <span class="loyalty-money-amount-applied">${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted}</span>
+            </p>
         </div>
     </div>
 </div>

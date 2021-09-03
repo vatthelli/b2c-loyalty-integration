@@ -5,6 +5,8 @@ var Money = require('dw/value/Money');
 var collections = require('*/cartridge/scripts/util/collections');
 var ServiceMgr = require('*/cartridge/scripts/services/ServiceMgr');
 var CONSTANTS = require('*/cartridge/scripts/loyaltyConstants');
+var pointsToMoneyHelpers = require('*/cartridge/scripts/helpers/pointsToMoneyHelpers');
+var moneyModel = require('*/cartridge/models/money');
 
 /**
  * @type {dw/system/Log}
@@ -12,13 +14,13 @@ var CONSTANTS = require('*/cartridge/scripts/loyaltyConstants');
 var LOGGER = require('dw/system/Logger').getLogger('b2cloyalty', 'scripts.factories.loyaltyFactory');
 
 function populateBaseLoyaltyAttributes(profile, loyaltyModel) {
-    var BasketMgr = require('dw/order/BasketMgr');
     loyaltyModel.isLoyaltyCustomer = customer instanceof Customer ? customer.profile.custom.b2cloyalty_optInStatus : customer.raw.profile.custom.b2cloyalty_optInStatus;
     // @TODO consider remove bellow if we can use composite APIs and reuse contactID to get memberID
     loyaltyModel.loyaltyCustomerID = customer instanceof Customer ? customer.profile.custom.b2cloyalty_loyaltyProgramMemberId : customer.raw.profile.custom.b2cloyalty_loyaltyProgramMemberId;
 }
 
 function populatePointsBalance(profile, loyaltyModel) {
+    var BasketMgr = require('dw/order/BasketMgr');
     var pointsBalanceAction = new (require('*/cartridge/scripts/models/core/pointsBalanceAction'))(profile);
     var requestBody = pointsBalanceAction.getRequestBody();
     LOGGER.info('Checking available loyalty points. Here is the request body: {0}', requestBody);
@@ -28,6 +30,13 @@ function populatePointsBalance(profile, loyaltyModel) {
     }
     if (result && result.status == 'OK') {
         loyaltyModel.allowedPointsAmount = result.object[0].outputValues.PointsBalance;
+        
+        var currentBasket = BasketMgr.getCurrentBasket();
+        if (currentBasket.getCurrencyCode()) {
+            loyaltyModel.allowedPointsAsMoney = moneyModel.toMoneyModel(pointsToMoneyHelpers.pointsToMoney(loyaltyModel.allowedPointsAmount, currentBasket.getCurrencyCode()));
+        } else {
+            loyaltyModel.allowedPointsAsMoney = '-';
+        }
     }
 }
 

@@ -2,9 +2,9 @@
     <div class="loyalty-summary-header payment-info-label">
         <span>${Resource.msg('msg.payment.type.loyalty', 'confirmation', null)}</span>
     </div>
-    <div class="loyalty-summary-amount-label">${Resource.msgf('msg.payment.amount.from.loyalty', 'confirmation', null)}
+    <div class="loyalty-summary-amount-label">
         <span class="loyalty-summary-amount">${pdict.order.billing.payment.totalByPaymentMethod.LOYALTY.formatted}</span>
+        <span class="loyalty-summary-amount-points-label">${Resource.msgf('msg.payment.amount.from.loyalty.points', 'confirmation', null)}</span>
+        <span class="loyalty-summary-points-amount">${pdict.order.billing.payment.totalLoyaltyPointsApplied}</span>
     </div>
 </div>
-
-

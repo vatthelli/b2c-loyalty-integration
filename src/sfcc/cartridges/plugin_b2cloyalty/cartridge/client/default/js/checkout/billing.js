@@ -9,18 +9,24 @@ var base = require('base/checkout/billing');
  */
 function updatePaymentInformation(order) {
     var $paymentSummary = $('.payment-details');
-    var $loyaltySummary = null;
     $paymentSummary.empty();
+
+    // Remove any loyalty summary that may exist
+    var $loyaltySummary = $('#loyalty-summary');
+    if ($loyaltySummary) {
+        $loyaltySummary.remove();
+    }
 
     if (order.billing.payment && order.billing.payment.selectedPaymentInstruments
         && order.billing.payment.selectedPaymentInstruments.length > 0) {
 
-        // Add loyalty summary if existing
+        // Add loyalty summary if loyalty PI exists
         if (order.billing.payment.totalByPaymentMethod.LOYALTY && order.billing.payment.totalByPaymentMethod.LOYALTY.value > 0) {
             $loyaltySummary = $('#loyalty-summary-template').clone();
             $loyaltySummary.attr('id', 'loyalty-summary');
             $loyaltySummary.removeClass('d-none');
             $('.loyalty-summary-amount', $loyaltySummary).text(order.billing.payment.totalByPaymentMethod.LOYALTY.formatted);
+            $('.loyalty-summary-points-amount', $loyaltySummary).text(order.billing.payment.totalLoyaltyPointsApplied);
             $paymentSummary.append($loyaltySummary);
         }   
 
@@ -37,11 +43,6 @@ function updatePaymentInformation(order) {
                 + creditCardPI.expirationMonth
                 + '/' + creditCardPI.expirationYear
                 + '</span></div>';
-        }
-    } else {
-        var $loyaltySummary = $('#loyalty-summary');
-        if ($loyaltySummary) {
-            $loyaltySummary.remove();
         }
     }
     $paymentSummary.append(ccHtmlToAppend);

@@ -1,8 +1,8 @@
 <fieldset class="loyalty-payment-form-fields">
 
 <div class="row">
-    <div class="col-12 loyalty-amount-info-section">
-        <p class="summary-section-label allowed-loyalty-points-label">${Resource.msg('label.order.loyalty.amount.allowed', 'payment', null)}<span class="allowed-loyalty-points"><isprint value=${pdict.loyaltyDetails.allowedPointsAmount} encoding="off" /></span></p>
+    <div class="col-12">
+        <p class="summary-section-label allowed-loyalty-points-label">${Resource.msgf('label.order.loyalty.amount.allowed', 'payment', null, pdict.loyaltyDetails.allowedPointsAmount, pdict.loyaltyDetails.allowedPointsAsMoney.formatted)}</p>
     </div>
 </div>
 

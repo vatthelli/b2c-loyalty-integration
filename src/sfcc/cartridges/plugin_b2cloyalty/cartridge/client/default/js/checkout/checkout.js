@@ -211,7 +211,9 @@ var scrollAnimate = require('base/components/scrollAnimate');
                     ///////////////////////////////////////
                     // LOYALTY CHANGES START
                     ///////////////////////////////////////
-                    let remainingAmount = ($('#checkout-main').data('remaining-amount'));
+                    // If no remaining amount, then short-circuit this call and just return a
+                    // postitive response
+                    let remainingAmount = ($('.payment-information').data('remaining-amount'));
                     if (remainingAmount != null && remainingAmount <= 0) {
                         defer.resolve();
                         return defer;
