@@ -289,7 +289,7 @@ server.get('Header', server.middleware.include, function (req, res, next) {
 });
 
 /**
- * Loyalty-Show : The Account-Dashboard endpoint will render the shopper's loyalty dashboard page.
+ * Loyalty-Dashboard : The Loyalty-Dashboard endpoint will render the shopper's loyalty dashboard page with Tier/s, Point Balance/s, Benefits, Loyalty MemberNo details
  * @name B2CLoyalty/Loyalty-Dashboard
  * @function
  * @memberof Loyalty
@@ -339,13 +339,54 @@ server.get(
     }
 )
 
+/**
+ * Loyalty-MyActivities : The Loyalty-MyActivities endpoint will render the shopper's loyalty activity page with transaction journal details.
+ * @name B2CLoyalty/Loyalty-MyActivities
+ * @function
+ * @memberof Loyalty
+ * @param {middleware} - server.middleware.https
+ * @param {middleware} - userLoggedIn.validateLoggedIn
+ * @param {middleware} - consentTracking.consent
+ * @param {querystringparameter} - registration - A flag determining whether or not this is a newly registered account
+ * @param {category} - senstive
+ * @param {renders} - isml
+ * @param {serverfunction} - get
+ */
 server.get(
     'MyActivities',
     userLoggedIn.validateLoggedIn,
     consentTracking.consent,
     loyaltyEnrollment.validateLoyaltyEnrolled,
-    function(req, res, next) {
+    function (req, res, next) {
+        var Resource = require('dw/web/Resource');
+        var URLUtils = require('dw/web/URLUtils');
+        var accountHelpers = require('*/cartridge/scripts/account/accountHelpers');
+        var LoyaltyFactory = require('*/cartridge/scripts/factories/loyaltyFactory');
 
+        // NOTE: The following will trigger a request to Loyalty Cloud, adding to the latency of the full page load
+        var loyaltyModel = LoyaltyFactory.get({parts: ['base', 'transactionJournal']});
+
+        var accountModel = accountHelpers.getAccountModel(req);
+
+        res.render('account/loyalty/loyaltyMyActivities', {
+            loyalty: loyaltyModel,
+            account: accountModel,
+            breadcrumbs: [
+                {
+                    htmlValue: Resource.msg('global.home', 'common', null),
+                    url: URLUtils.home().toString()
+                },
+                {
+                    htmlValue: Resource.msg('page.title.myaccount', 'account', null),
+                    url: URLUtils.url('Account-Show').toString()
+                },
+                {
+                    htmlValue: Resource.msg('label.loyalty.dashboard', 'account', null),
+                    url: URLUtils.url('Loyalty-Dashboard').toString()
+                }
+            ]
+        });
+        next();
     }
 )
 

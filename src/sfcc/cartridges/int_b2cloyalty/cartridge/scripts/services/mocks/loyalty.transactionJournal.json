@@ -1,0 +1,2061 @@
+{
+  "compositeResponse": [
+    {
+      "body": {
+        "totalSize": 31,
+        "done": true,
+        "records": [
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjdEAE"
+            },
+            "Id": "0lV5g0000000WjdEAE",
+            "ActivityDate": "2021-06-16T04:04:23.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSipEAG"
+              },
+              "Name": "Redemption"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQjEAM"
+              },
+              "Name": "Redeem against order"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPhAAO"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": 6585.0,
+            "TransactionJournalLedger": {
+              "totalSize": 1,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NwAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 6585.0,
+                  "EventType": "Debit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjcEAE"
+            },
+            "Id": "0lV5g0000000WjcEAE",
+            "ActivityDate": "2021-06-16T03:56:02.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NuAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NvAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjbEAE"
+            },
+            "Id": "0lV5g0000000WjbEAE",
+            "ActivityDate": "2021-06-16T03:56:00.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPfAAO"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NsAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NtAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 876.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjaEAE"
+            },
+            "Id": "0lV5g0000000WjaEAE",
+            "ActivityDate": "2021-06-15T22:57:38.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NqAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NrAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjZEAU"
+            },
+            "Id": "0lV5g0000000WjZEAU",
+            "ActivityDate": "2021-06-15T22:57:34.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPbAAO"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 3,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NnAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NpAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 500.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NoAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 657.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjYEAU"
+            },
+            "Id": "0lV5g0000000WjYEAU",
+            "ActivityDate": "2021-06-15T16:36:38.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NlAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NmAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjXEAU"
+            },
+            "Id": "0lV5g0000000WjXEAU",
+            "ActivityDate": "2021-06-15T16:36:37.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPZAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NjAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NkAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 876.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjWEAU"
+            },
+            "Id": "0lV5g0000000WjWEAU",
+            "ActivityDate": "2021-06-15T16:35:50.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NhAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NiAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjVEAU"
+            },
+            "Id": "0lV5g0000000WjVEAU",
+            "ActivityDate": "2021-06-15T16:35:46.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPXAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 3,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NeAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NgAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 500.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NfAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 657.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjUEAU"
+            },
+            "Id": "0lV5g0000000WjUEAU",
+            "ActivityDate": "2021-05-25T17:25:26.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSipEAG"
+              },
+              "Name": "Redemption"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQjEAM"
+              },
+              "Name": "Redeem against order"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WONIAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": 6585.0,
+            "TransactionJournalLedger": {
+              "totalSize": 7,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NdAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 6585.0,
+                  "EventType": "Debit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g000000fy9EAAQ"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 40.0,
+                  "EventType": "Debit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g000000fy9JAAQ"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 50.0,
+                  "EventType": "Debit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g000000fy7vAAA"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 40.0,
+                  "EventType": "Debit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g000000fy99AAA"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 40.0,
+                  "EventType": "Debit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g000000fy80AAA"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 40.0,
+                  "EventType": "Debit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g000000fy7qAAA"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Debit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjTEAU"
+            },
+            "Id": "0lV5g0000000WjTEAU",
+            "ActivityDate": "2021-05-25T17:17:13.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NbAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NcAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjSEAU"
+            },
+            "Id": "0lV5g0000000WjSEAU",
+            "ActivityDate": "2021-05-25T17:17:11.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WONGAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 3,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NYAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NZAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 657.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NaAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 500.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjREAU"
+            },
+            "Id": "0lV5g0000000WjREAU",
+            "ActivityDate": "2021-05-25T16:56:11.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NWAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NXAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjQEAU"
+            },
+            "Id": "0lV5g0000000WjQEAU",
+            "ActivityDate": "2021-05-25T16:56:10.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WONFAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NUAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NVAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 438.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjPEAU"
+            },
+            "Id": "0lV5g0000000WjPEAU",
+            "ActivityDate": "2021-05-25T16:53:20.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NSAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NTAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjOEAU"
+            },
+            "Id": "0lV5g0000000WjOEAU",
+            "ActivityDate": "2021-05-25T16:53:20.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WONEAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NQAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NRAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 438.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjNEAU"
+            },
+            "Id": "0lV5g0000000WjNEAU",
+            "ActivityDate": "2021-05-04T21:29:43.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPWAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NHAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 95.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NOAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 95.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkZEAU"
+            },
+            "Id": "0lV5g0000000WkZEAU",
+            "ActivityDate": "2021-05-04T21:29:43.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSipEAG"
+              },
+              "Name": "Redemption"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQjEAM"
+              },
+              "Name": "Redeem against order"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPWAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": 1830.0,
+            "TransactionJournalLedger": {
+              "totalSize": 1,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NAAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 1830.0,
+                  "EventType": "Debit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjMEAU"
+            },
+            "Id": "0lV5g0000000WjMEAU",
+            "ActivityDate": "2021-05-04T21:18:27.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPVAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NGAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 0.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NNAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 0.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkYEAU"
+            },
+            "Id": "0lV5g0000000WkYEAU",
+            "ActivityDate": "2021-05-04T21:18:27.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSipEAG"
+              },
+              "Name": "Redemption"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQjEAM"
+              },
+              "Name": "Redeem against order"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPVAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": 6585.0,
+            "TransactionJournalLedger": {
+              "totalSize": 1,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005N9AAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 6585.0,
+                  "EventType": "Debit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkXEAU"
+            },
+            "Id": "0lV5g0000000WkXEAU",
+            "ActivityDate": "2021-05-04T21:15:43.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005N7AAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005N8AAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkWEAU"
+            },
+            "Id": "0lV5g0000000WkWEAU",
+            "ActivityDate": "2021-05-04T21:15:42.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPUAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005N5AAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005N6AAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 438.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjLEAU"
+            },
+            "Id": "0lV5g0000000WjLEAU",
+            "ActivityDate": "2021-05-04T21:15:42.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPUAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NFAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NMAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 438.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjJEAU"
+            },
+            "Id": "0lV5g0000000WjJEAU",
+            "ActivityDate": "2021-04-29T15:49:40.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPRAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NDAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 0.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NKAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 0.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkSEAU"
+            },
+            "Id": "0lV5g0000000WkSEAU",
+            "ActivityDate": "2021-04-29T15:49:40.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSipEAG"
+              },
+              "Name": "Redemption"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQjEAM"
+              },
+              "Name": "Redeem against order"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPRAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": 6585.0,
+            "TransactionJournalLedger": {
+              "totalSize": 1,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MxAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 6585.0,
+                  "EventType": "Debit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkREAU"
+            },
+            "Id": "0lV5g0000000WkREAU",
+            "ActivityDate": "2021-04-29T15:45:29.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MvAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MwAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjIEAU"
+            },
+            "Id": "0lV5g0000000WjIEAU",
+            "ActivityDate": "2021-04-29T15:45:28.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPQAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NCAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 207.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NJAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 414.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkQEAU"
+            },
+            "Id": "0lV5g0000000WkQEAU",
+            "ActivityDate": "2021-04-29T15:45:28.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPQAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MtAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 207.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MuAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 414.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkPEAU"
+            },
+            "Id": "0lV5g0000000WkPEAU",
+            "ActivityDate": "2021-04-29T15:43:32.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQcEAM"
+              },
+              "Name": "Social media activity"
+            },
+            "Order": null,
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MrAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MsAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 30.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WkOEAU"
+            },
+            "Id": "0lV5g0000000WkOEAU",
+            "ActivityDate": "2021-04-29T15:43:31.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPPAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MpAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005MqAAI"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 438.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          },
+          {
+            "attributes": {
+              "type": "TransactionJournal",
+              "url": "/services/data/v52.0/sobjects/TransactionJournal/0lV5g0000000WjHEAU"
+            },
+            "Id": "0lV5g0000000WjHEAU",
+            "ActivityDate": "2021-04-29T15:43:30.000+0000",
+            "JournalType": {
+              "attributes": {
+                "type": "JournalType",
+                "url": "/services/data/v52.0/sobjects/JournalType/0lE5g000000PSinEAG"
+              },
+              "Name": "Accrual"
+            },
+            "JournalSubType": {
+              "attributes": {
+                "type": "JournalSubType",
+                "url": "/services/data/v52.0/sobjects/JournalSubType/0lS5g0000004DQZEA2"
+              },
+              "Name": "Purchase"
+            },
+            "Order": {
+              "attributes": {
+                "type": "Order",
+                "url": "/services/data/v52.0/sobjects/Order/8015g000001WOPPAA4"
+              },
+              "SFCC_Order_Number__c": null
+            },
+            "Redeem_Points__c": null,
+            "TransactionJournalLedger": {
+              "totalSize": 2,
+              "done": true,
+              "records": [
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NBAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELYAA2"
+                    },
+                    "Name": "Tier Points"
+                  },
+                  "Points": 219.0,
+                  "EventType": "Credit"
+                },
+                {
+                  "attributes": {
+                    "type": "LoyaltyLedger",
+                    "url": "/services/data/v52.0/sobjects/LoyaltyLedger/05w5g00000005NIAAY"
+                  },
+                  "LoyaltyProgramCurrency": {
+                    "attributes": {
+                      "type": "LoyaltyProgramCurrency",
+                      "url": "/services/data/v52.0/sobjects/LoyaltyProgramCurrency/0lc5g0000004ELXAA2"
+                    },
+                    "Name": "Reward Points"
+                  },
+                  "Points": 438.0,
+                  "EventType": "Credit"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "httpHeaders": {},
+      "httpStatusCode": 200,
+      "referenceId": "refTransactionJournal"
+    }
+  ]
+}

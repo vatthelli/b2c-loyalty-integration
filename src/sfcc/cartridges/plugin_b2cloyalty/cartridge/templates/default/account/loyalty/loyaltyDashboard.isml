@@ -51,20 +51,36 @@
             </div>
             <div class="col-sm-12 col-md-12">
                 <div class="card">
-                    <div class="card-header">VOUCHERS (vouchers.sum)</div>
+                    <div class="card-header">${Resource.msg('dashboard.loyalty.card.benefits', 'account', null)}</div>
                     <div class="card-body">
-                        <h2>${Resource.msg('dashboard.loyalty.card.vouchers', 'account', null)}</h2>
+                        <table class="table table-striped">
+                            <isloop items="${pdict.loyalty.LoyaltyMemberBenefits}" var="benefit">
+                                <tr>
+                                    <td>${benefit}</td>
+                                </tr>
+                            </isloop>
+                            <thead>
+                        </table>
                     </div>
                 </div>
             </div>
+            <iscomment>
+                We hide bellow before Dreamforce scope.
             <div class="col-sm-12 col-md-12">
                 <h2>${Resource.msg('dashboard.loyalty.card.promotions', 'account', null)}</h2>
             </div>
             <div class="col-sm-12 col-md-12">
-                <h2>${Resource.msg('dashboard.loyalty.card.benefits', 'account', null)}</h2>
+                <h2>${Resource.msg('dashboard.loyalty.card.vouchers', 'account', null)}</h2>
             </div>
+            </iscomment>
             <div class="col-sm-12 col-md-12">
-                <h2>${Resource.msg('dashboard.loyalty.card.optiontoleave', 'account', null)}</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-sm-12 col-md-12 row">
+                            <a href="${URLUtils.url('Loyalty-Unregister')}" class="card-link" aria-label="${Resource.msg('profile.loyalty.status.cta.label.unregister','account',null)}">${Resource.msg('dashboard.loyalty.card.optiontoleave', 'account', null)}</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

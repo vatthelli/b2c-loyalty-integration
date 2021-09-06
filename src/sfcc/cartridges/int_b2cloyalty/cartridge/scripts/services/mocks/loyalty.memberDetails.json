@@ -11,8 +11,6 @@
               "url": "/services/data/v52.0/sobjects/LoyaltyProgramMember/0lM5g0000004Q1PEAU"
             },
             "Id": "0lM5g0000004Q1PEAU",
-            "ContactId": "0035g00000D3L0LAAV",
-            "AccountId": null,
             "MembershipNumber": "24345671"
           }
         ]
@@ -41,7 +39,7 @@
               "url": "/services/data/v52.0/sobjects/LoyaltyMemberCurrency/0lz5g0000004EIcAAM"
             },
             "Name": "Tier Points",
-            "PointsBalance": 5238.0,
+            "PointsBalance": 5128.0,
             "TotalPointsAccrued": 5238.0
           }
         ]
@@ -86,6 +84,59 @@
       "httpHeaders": {},
       "httpStatusCode": 200,
       "referenceId": "refMemberTierGroup"
+    },
+    {
+      "body": {
+        "totalSize": 6,
+        "done": true,
+        "records": [
+          {
+            "attributes": {
+              "type": "MemberBenefit",
+              "url": "/services/data/v52.0/sobjects/MemberBenefit/0hW5g000000sYAiEAM"
+            },
+            "Name": "Extended Returns (30 Days)"
+          },
+          {
+            "attributes": {
+              "type": "MemberBenefit",
+              "url": "/services/data/v52.0/sobjects/MemberBenefit/0hW5g000000sYAWEA2"
+            },
+            "Name": "Complimentary Voucher for Platinum Members"
+          },
+          {
+            "attributes": {
+              "type": "MemberBenefit",
+              "url": "/services/data/v52.0/sobjects/MemberBenefit/0hW5g000000sYAZEA2"
+            },
+            "Name": "Exclusive Merchandise for Platinum Members"
+          },
+          {
+            "attributes": {
+              "type": "MemberBenefit",
+              "url": "/services/data/v52.0/sobjects/MemberBenefit/0hW5g000000sYAjEAM"
+            },
+            "Name": "Free Shipping (> $100 Orders)"
+          },
+          {
+            "attributes": {
+              "type": "MemberBenefit",
+              "url": "/services/data/v52.0/sobjects/MemberBenefit/0hW5g000000sYAaEAM"
+            },
+            "Name": "Priority Support for Platinum Members"
+          },
+          {
+            "attributes": {
+              "type": "MemberBenefit",
+              "url": "/services/data/v52.0/sobjects/MemberBenefit/0hW5g000000sYAbEAM"
+            },
+            "Name": "Free Voonooo Entertainment Subscription"
+          }
+        ]
+      },
+      "httpHeaders": {},
+      "httpStatusCode": 200,
+      "referenceId": "refBenefit"
     }
   ]
 }

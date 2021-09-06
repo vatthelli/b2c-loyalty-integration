@@ -1,9 +1,5 @@
 'use strict';
 
-var Site = require('dw/system/Site');
-var StringUtils = require('dw/util/StringUtils');
-var Calendar = require('dw/util/Calendar');
-
 /**
  * @object {Class}
  * @typedef MemberDetailsRequest This class is used to build requests for a composite API which will fetch Tier,
@@ -30,7 +26,7 @@ function MemberDetailsRequest(profile) {
         "compositeRequest": [
             {
                 "method": "GET",
-                "url": "/services/data/v52.0/query?q=select+Id,+ContactId,+AccountId,+MembershipNumber+from+LoyaltyProgramMember+where+ContactId='0035g00000D3L0LAAV'",
+                "url": "/services/data/v52.0/query?q=select+Id,+MembershipNumber+from+LoyaltyProgramMember+where+Id='"+this.profile.custom.b2cloyalty_loyaltyProgramMemberId+"'",
                 "referenceId": "refLoyaltyProgramMember"
             },
             {
@@ -47,8 +43,12 @@ function MemberDetailsRequest(profile) {
                 "method": "GET",
                 "url": "/services/data/v52.0/query?q=SELECT+Name+FROM+LoyaltyTierGroup+WHERE+iD='@{refMemberTier.records[0].LoyaltyTierGroupId}'",
                 "referenceId": "refMemberTierGroup"
+            },
+            {
+                "method": "GET",
+                "url": "/services/data/v52.0/query?q=SELECT+Name+FROM+MemberBenefit+WHERE+MemberId='@{refLoyaltyProgramMember.records[0].Id}'+AND+Status<>'Expired'",
+                "referenceId": "refBenefit"
             }
-
         ]
     }
 }
